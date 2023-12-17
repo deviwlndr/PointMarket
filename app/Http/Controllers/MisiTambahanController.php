@@ -10,7 +10,7 @@ class MisitambahanController extends Controller
     //
     public function index()
     {
-    $misitambahans = MisiTambahan::all();
+        $misitambahans = MisiTambahan::all();
         return view('misitambahan.index', compact('misitambahans'));
     }
 
@@ -55,7 +55,4 @@ class MisitambahanController extends Controller
         return redirect('/misitambahan')->with('success', 'Data Misi Tambahan Berhasil Dihapus.');
     
     }
-
-
-
 }

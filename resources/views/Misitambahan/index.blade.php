@@ -1,10 +1,11 @@
 @extends('layouts.master')
 
 @section('konten')
+
 <div class="card ml-5">
                 <div class="card-body ">
                   <h4 class="card-title">Misi Tambahan</h4>
-                  <a href="/create" class="btn btn-primary float-end" >Add</a>
+                  <a href="/misitambahan/create" class="btn btn-primary float-end" >Add</a>
                   <p class="card-description">
                     
                   </p>

@@ -1,28 +1,7 @@
 @extends('layouts.master')
 
 @section('konten')
-<head>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Tautan CSS Bootstrap -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Tautan CSS Kustom (Jika Ada) -->
-<link href="{{ asset('path/to/custom.css') }}" rel="stylesheet">
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Point Market</title>
-  <!-- base:css -->
-  <link rel="stylesheet" href="{{ asset ('vendors/typicons/typicons.css') }}">
-  <link rel="stylesheet" href="{{ asset ('vendors/css/vendor.bundle.base.css') }}">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="{{ ('css/vertical-layout-light/style.css') }}">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
-</head>
 <div class="card">
 
     <div class="card-body">

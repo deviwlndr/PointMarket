@@ -2,7 +2,7 @@
 
 @section('konten')
         <div class="container">
-            <a class="btn btn-primary" href="barangproject/create">Tambah Barang Project</a>
+            <a class="btn btn-primary" href="/barangproject/create">Tambah Barang Project</a>
                 <table class="table table-hover">
                     <tr>
                         <th>KODE</th>
@@ -16,7 +16,7 @@
                             <td>{{$p->id}}</td>
                             <td>{{$p->nama_barang}}</td>
                             <td>{{$p->deskripsi}}</td>
-                            <td>{{$p->harga_point}}</td>
+                            <td><label class="badge badge-danger">{{$p->harga_point}}</td>
                             <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a class="btn btn-warning mr-5" href="/barangproject/{{$p->id}}/edit">Edit</a>
