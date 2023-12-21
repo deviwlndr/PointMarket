@@ -5,7 +5,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BarangprojectController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FormPembelianController;
 use App\Http\Controllers\JenisTransaksiController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\RiwayatPembelianController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -57,6 +60,22 @@ Route::get('jenistransaksi/create',[JenisTransaksiController::class,'create'] );
 Route::get('/jenistransaksi/{id}/edit', [JenisTransaksiController::class, 'edit']);
 Route::put('/jenistransaksi/{id}', [JenisTransaksiController::class, 'update']);
 Route::delete('/jenistransaksi/{id}', [JenisTransaksiController::class, 'destroy']);
+
+//Route riwayat pembelian
+Route::get('/riwayatpembelian', [RiwayatPembelianController::class, 'index']);
+//route form pembelian
+Route::get('/formpembelian', [FormPembelianController::class, 'index']);
+Route::post('/formpembelian', [FormPembelianController::class, 'index']);
+Route::post('/formpembelian/create', [FormPembelianController::class, 'store']);
+
+//route untuk mahasiswa
+Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::post('/mahasiswa', [MahasiswaController::class, 'store']);
+Route::get('/mahasiswa/create', [MahasiswaController::class, 'create']);
+Route::get('/mahasiswa/{id}/edit', [MahasiswaController::class, 'edit']);
+Route::put('/mahasiswa/{id}', [MahasiswaController::class, 'update']);
+Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
+
 
 
 

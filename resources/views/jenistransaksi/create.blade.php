@@ -14,7 +14,7 @@
                 @csrf
                 
                 <div class="form-group">
-                <label for="examplenpm">Nama Transaksi</label>
+                <label for="examplenama_transaksi">Nama Transaksi</label>
                     <input type="text" name="nama_transaksi" class="form-control" id="examplenama_transaksi" aria-describedby="nama_transaksi" placeholder="Nama Transaksi">
                 </div>
                 <div class="form-group">

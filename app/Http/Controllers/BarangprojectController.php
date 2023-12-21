@@ -50,8 +50,13 @@ class BarangprojectController extends Controller
     public function update($id, Request $request) 
     {
         $barangproject = Barangproject::find($id);
-        $barangproject->update($request->except(['_token','submit']));
-        return redirect('/barangproject');
+       $barangproject-> update ([
+            'kode'=> $request->kode,
+            'nama_barang'=> $request->nama_barang,
+            'deskripsi'=> $request->deskripsi,
+            'harga_point'=> $request->harga_point,
+           ]);
+           return redirect('/barangproject')->with('success', 'Data Barang Project Berhasil Diubah.');
     }
 
     public function destroy($id)

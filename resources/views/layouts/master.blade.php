@@ -239,6 +239,8 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link {{ request()->is('login') ? 'active' : '' }}" href="/login"> Login </a></li>
                 <li class="nav-item"> <a class="nav-link {{ request()->is('register') ? 'active' : '' }}" href="/register"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('riwayat_pembelian') ? 'active' : '' }}" href="/riwayat_pembelian"> Riwayat Pembelian </a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('form_pembelian') ? 'active' : '' }}" href="/form_pembelian"> Form Pembelian </a></li>
               </ul>
             </div>
           </li>
