@@ -5,7 +5,6 @@
 <div class="card ml-5">
                 <div class="card-body ">
                   <h4 class="card-title">Misi Tambahan</h4>
-                  <a href="/misitambahan/create" class="btn btn-primary float-end" >Add</a>
                   <p class="card-description">
                     
                   </p>
@@ -20,6 +19,7 @@
                           <th>Harga Point</th>
                           <th>Action</th>
                         </tr>
+                        
                       </thead>
                       <tbody>
                         <tr>
@@ -33,21 +33,16 @@
                             <td><label class="badge badge-danger">{{ $misitambahan->harga_point }}</label></td>
                             <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                
-                              <a href="/misitambahan/{{ $misitambahan->id }}/edit" class="btn btn-warning mr-5">Edit</a>
-                              <form action="/misitambahan/{{ $misitambahan->id }}" method="POST">
-                                @method("DELETE")
-                                @csrf
-                                <input type="submit" class="btn btn-danger " value="Delete">
-                              </form>
+                                <a href="/riwayat_pembelian/create {{ $misitambahan->id }}" class="btn btn-warning mr-5">Ambil Misi</a>
+                            </div> 
+                            </form>
                               
                              
 
                             </td>
                         </tr>
                     @endforeach
-
-                        </tr>
+                    </tr>
                         <tr>
                           <td></td>
                           <td></td>
@@ -60,6 +55,5 @@
                   </div>
                 </div>
               </div>
-            
-
 @endsection
+                        

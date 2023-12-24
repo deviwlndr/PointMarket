@@ -32,7 +32,7 @@
     
       <div class="navbar-brand-wrapper d-flex justify-content-center">
       <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-    <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('images/logo.svg') }}" alt="logo"/></a>
+    <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('') }}" alt="Point Market"/></a>
     <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo"/></a>
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
         <span class="typcn typcn-th-menu"></span>
@@ -232,7 +232,7 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="typcn typcn-user-add-outline menu-icon"></i>
-              <span class="menu-title">Mahasiswa</span>
+              <span class="menu-title">Admin</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
@@ -241,9 +241,27 @@
                 <li class="nav-item"> <a class="nav-link {{ request()->is('register') ? 'active' : '' }}" href="/register"> Register </a></li>
                 <li class="nav-item"> <a class="nav-link {{ request()->is('riwayat_pembelian') ? 'active' : '' }}" href="/riwayat_pembelian"> Riwayat Pembelian </a></li>
                 <li class="nav-item"> <a class="nav-link {{ request()->is('form_pembelian') ? 'active' : '' }}" href="/form_pembelian"> Form Pembelian </a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('mahasiswa') ? 'active' : '' }}" href="/mahasiswa"> Mahasiswa </a></li>
               </ul>
             </div>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="erro">
+              <i class="typcn typcn-user-add-outline menu-icon"></i>
+              <span class="menu-title">Dashboard Mahasiswa</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="error">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link {{ request()->is('level_mahasiswa/point') ? 'active' : '' }}" href="/level_mahasiswa/point">Level Mahasiswa</a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('mhs_misitambahan') ? 'active' : '' }}" href="/mhs_misitambahan"> Misi Tambahan </a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('mhs_misitambahan') ? 'active' : '' }}" href="/mhs_misitambahan"> Barang Project </a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('riwayat_pembelian') ? 'active' : '' }}" href="/riwayat_pembelian">Riwayat Pembelian</a></li>
+              </ul>
+            </div>
+          </li>
+          
           
         </ul>
         <div class="row" id="proBanner">

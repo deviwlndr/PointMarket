@@ -18,11 +18,11 @@
         </div>
         @endif
           <div class="brand-logo">
-            <img src="../../images/logo-dark.svg" alt="logo">
+            <img src="" alt="Point Market">
           </div>
           <h4>Hello! let's get started</h4>
           <h6 class="font-weight-light">Login to continue.</h6>
-          <form action="/login" method="post" class="pt-3">
+          <form action="/register" method="post" class="pt-3">
             @csrf
             <div class="form-group">
                 <input type="npm" name="npm" class="form-control form-control-lg @error('npm') is-invalid @enderror" id="npm" placeholder="NPM" autofocus required>
@@ -42,7 +42,7 @@
             </div>
 
             <div class="mt-3">
-              <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn " href="/login" type="submit">LOGIN</a>
+              <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn " href="/level_mahasiswa" type="submit">LOGIN</a>
             </div>
             <div class="my-2 d-flex justify-content-between align-items-center">
               <div class="form-check">

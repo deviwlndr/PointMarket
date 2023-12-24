@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('login', function (Blueprint $table) {
+        Schema::create('level_mahasiswa', function (Blueprint $table) {
             $table->id();
-            $table->integer('npm');
-            $table->string('password');
+            $table->integer('npm');;
+            $table->string('nama_mahasiswa');
+            $table->string('jumlah_point');
+            $table->string('level');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('login');
+        Schema::dropIfExists('level_mahasiswa');
     }
 };

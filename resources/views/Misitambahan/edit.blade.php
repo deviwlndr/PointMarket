@@ -17,13 +17,13 @@
                 <label for="examplekodemisi">Kode Misi</label>
                 <input type="text" name="kode_misi" class="form-control" id="examplekodemisi" aria-describedby="kodetransaksi" placeholder="Kode Transaksi" value="{{ $misitambahan->kode_misi }}">
                 <small id="kodemisi" class="form-text text-muted"></small>
+            </div>           
+            <div class="form-group">
+            <label for="examplenpm">Nama Misi</label>
+                <input type="text" name="jenis_misi" class="form-control" id="examplejenismisi" aria-describedby="jenismisi" placeholder="Jenis Misi" value="{{ $misitambahan->jenis_misi }}">
             </div>
             <div class="form-group">
-            <label for="examplenpm">NPM</label>
-                <input type="text" name="npm" class="form-control" id="examplenpm" aria-describedby="npm" placeholder="NPM" value="{{ $misitambahan->npm }}">
-            </div>
-            <div class="form-group">
-            <label for="examplenpm">Jenis Misi</label>
+            <label for="examplenpm">Deskripsi</label>
                 <input type="text" name="jenis_misi" class="form-control" id="examplejenismisi" aria-describedby="jenismisi" placeholder="Jenis Misi" value="{{ $misitambahan->jenis_misi }}">
             </div>
             <div class="form-group">

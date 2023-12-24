@@ -23,8 +23,8 @@ class MisitambahanController extends Controller
     {
        MisiTambahan::create([
         'kode_misi'=> $request->kode_misi,
-        'npm'=> $request->npm,
-        'jenis_misi'=> $request->jenis_misi,
+        'nama_misi'=> $request->nama_misi,
+        'deskripsi'=>$request->deskripsi,
         'harga_point'=> $request->harga_point,
        ]);
        return redirect('/misitambahan')->with('success', 'Data Misi Tambahan Berhasil Ditambahkan.');
@@ -41,8 +41,8 @@ class MisitambahanController extends Controller
        $misitambahan = MisiTambahan::find($id);
        $misitambahan-> update ([
             'kode_misi'=> $request->kode_misi,
-            'npm'=> $request->npm,
-            'jenis_misi'=> $request->jenis_misi,
+            'nama_misi'=> $request->nama_misi,
+            'deskripsi'=> $request->deskripsi,
             'harga_point'=> $request->harga_point,
            ]);
            return redirect('/misitambahan')->with('success', 'Data Misi Tambahan Berhasil Diubah.');
