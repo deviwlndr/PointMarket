@@ -37,7 +37,13 @@
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
         <span class="typcn typcn-th-menu"></span>
     </button>
-</div> 
+</div>
+
+      
+          
+            
+              
+              
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="typcn typcn-th-menu"></span>
@@ -45,6 +51,7 @@
       </div>
     </nav>
     
+    </nav>
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
       <div class="theme-setting-wrapper">
@@ -159,44 +166,27 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }} " href="/dashboard">
-              <i class="typcn typcn-device-desktop menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-              <div class="badge badge-danger"></div>
-            </a>
+            
           </li>
-          
+
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Master Data</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/misitambahan">Misi Tambahan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/barangproject">Barang Project</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/jenistransaksi">Jenis Transaksi</a></li>
-              </ul>
-            </div>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="erro">
               <i class="typcn typcn-user-add-outline menu-icon"></i>
-              <span class="menu-title">Admin</span>
+              <span class="menu-title">Mahasiswa</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="auth">
+            <div class="collapse" id="error">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link {{ request()->is('login') ? 'active' : '' }}" href="/login"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link {{ request()->is('register') ? 'active' : '' }}" href="/register"> Register </a></li>
-                <li class="nav-item"> <a class="nav-link {{ request()->is('riwayat_pembelian/admin') ? 'active' : '' }}" href="/riwayat_pembelian/admin"> Riwayat Pembelian Misi</a></li>
-                <li class="nav-item"> <a class="nav-link {{ request()->is('riwayat_pembelian_barang/admin') ? 'active' : '' }}" href="/riwayat_pembelian_barang/admin"> Riwayat Pembelian Barang</a></li>
-                <li class="nav-item"> <a class="nav-link {{ request()->is('mahasiswa') ? 'active' : '' }}" href="/mahasiswa"> Level Mahasiswa </a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('level_mahasiswa/point') ? 'active' : '' }}" href="/level_mahasiswa/point">Level Mahasiswa</a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('mhs_misitambahan') ? 'active' : '' }}" href="/mhs_misitambahan"> Misi Tambahan </a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('mhs_barangproject') ? 'active' : '' }}" href="/mhs_barangproject"> Barang Project </a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('riwayat_pembelian_misi') ? 'active' : '' }}" href="/riwayat_pembelian_misi">Riwayat Pembelian Misi</a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('riwayat_pembelian_barang') ? 'active' : '' }}" href="/riwayat_pembelian_barang">Riwayat Pembelian Barang</a></li>
               </ul>
             </div>
           </li>
+          
+          
         </ul>
         <div class="row" id="proBanner">
     

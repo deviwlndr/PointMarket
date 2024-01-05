@@ -3,7 +3,7 @@
 @section('konten')
 <div class="card ml-5">
                 <div class="card-body ">
-                  <h4 class="card-title">Riwayat Pembelian</h4>                 
+                  <h4 class="card-title">Riwayat Transaksi Misi</h4>                 
                   <p class="card-description">                   
                   </p>
                   <div class="table-responsive">
@@ -22,9 +22,9 @@
                         <tr>
                           <th>id</th>
                           <th>NPM</th>
-                          <th>Kode Pembelian</th>
-                          <th>Nama Pembelian</th>
-                          <th>Tanggal Pemebelian</th>
+                          <th>Kode Misi</th>
+                          <th>Nama Misi</th>
+                          <th>Tanggal Transaksi</th>
 
                          
                         </tr>

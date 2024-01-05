@@ -35,9 +35,7 @@
                                 <tr>
                                     
                                     <td>{{ $jenistransaksi->nama_transaksi }}</td>
-                                    <td id="deskripsiCell{{ $jenistransaksi->id }}" class="deskripsi-cell">{{ $jenistransaksi->deskripsi }}
-                                        <a href="#" class="btn btn-info btn-lihat-selengkapnya" data-id="{{ $jenistransaksi->id }}">Lihat Selengkapnya</a>
-                                    </td>
+                                    <td id="deskripsiCell{{ $jenistransaksi->id }}" class="deskripsi-cell">{{ $jenistransaksi->deskripsi }}</td>
                                     <td><label class="badge badge-danger">{{ $jenistransaksi->point }}</label></td>
                                     <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
@@ -57,35 +55,4 @@
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $(".btn-lihat-selengkapnya").on("click", function(e) {
-            e.preventDefault();
-            var id = $(this).data("id");
-            toggleDeskripsi(id);
-        });
-        
-        function toggleDeskripsi(id) {
-            // Ganti "deskripsiCell" dengan ID yang sesuai pada elemen <td>
-            var deskripsiCell = $("#deskripsiCell" + id);
-            deskripsiCell.toggleClass("show-full"); // Tambahkan atau hapus kelas "show-full"
-        }
-    });
-    </script>
-
-    <style>
-        /* Gaya CSS untuk mengatur tinggi deskripsi-cell */
-        .deskripsi-cell {
-            max-height: 50px; /* Tinggi maksimum awal */
-            overflow: hidden;
-            transition: max-height 0.3s ease-out; /* Efek transisi */
-        }
-
-        /* Gaya CSS untuk menampilkan seluruh isi saat kelas show-full diaktifkan */
-        .deskripsi-cell.show-full {
-            max-height: none;
-        }
-    </style>
 @endsection

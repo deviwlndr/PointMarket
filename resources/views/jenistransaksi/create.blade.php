@@ -8,8 +8,6 @@
             <div class="g-col-3 g-start-2">Add Jenis Transaksi</div>
         </div>
             <p class="card-description"></p>
-            
-            
             <form action="{{ url('/jenistransaksi') }}" method="POST">
                 @csrf
                 

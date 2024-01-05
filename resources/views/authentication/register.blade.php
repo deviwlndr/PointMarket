@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.auth')
 
 @section('konten')
 <div class="col-lg-6 mx-auto">

@@ -11,11 +11,17 @@ class RiwayatPembelianController extends Controller
     {
         $riwayat_pembelians = RiwayatPembelian::all();
 
-        return view('riwayat_pembelian.index', compact('riwayat_pembelians'));
+        return view('riwayat_pembelian_misi.index', compact('riwayat_pembelians'));
+    }
+    public function index_mahasiswa_misi()
+    {
+        $riwayat_pembelians = RiwayatPembelian::all();
+
+        return view('riwayat_pembelian_misi.index_mahasiswa', compact('riwayat_pembelians'));
     }
     public function create()
     {
-        return view('riwayat_pembelian.create');
+        return view('riwayat_pembelian_misi.create');
     }
     public function store(Request $request)
     {
@@ -32,7 +38,7 @@ class RiwayatPembelianController extends Controller
         RiwayatPembelian::create($validatedData);
 
         // Redirect ke halaman formulir dengan pesan sukses atau ke halaman lain
-        return redirect('/riwayat_pembelian')->with('success', 'Transaksi berhasil disimpan');
+        return redirect('/riwayat_pembelian_misi')->with('success', 'Transaksi berhasil disimpan');
     } 
 
 }

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.dashboard_mahasiswa')
 
 @section('konten')
 
@@ -33,7 +33,7 @@
                             <td><label class="badge badge-danger">{{ $misitambahan->harga_point }}</label></td>
                             <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="/riwayat_pembelian/create {{ $misitambahan->id }}" class="btn btn-warning mr-5">Ambil Misi</a>
+                                <a href="/riwayat_pembelian_misi/create {{ $misitambahan->id }}" class="btn btn-warning mr-5">Ambil Misi</a>
                             </div> 
                             </form>
                               

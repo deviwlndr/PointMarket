@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.dashboard_mahasiswa')
 
 @section('konten')
 <div class="container">
