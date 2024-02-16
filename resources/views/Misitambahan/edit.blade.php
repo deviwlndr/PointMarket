@@ -6,9 +6,14 @@
     <div class="card-body">
         <h4 class="card-title">Edit Misi Tambahan</h4>
         <p class="card-description"></p>   
-        <form action="/misitambahan/{{ $misitambahan->id }}" method="POST">
+        <form action="/misitambahan/{{ $misitambahan->id_misi }}" method="POST">
             @method('put')
             @csrf
+            <div class="form-group">
+                <label for="examplekodemisi">ID Misi</label>
+                <input type="text" name="kode_misi" class="form-control" id="examplekodemisi" aria-describedby="kodetransaksi" placeholder="Kode Transaksi" value="{{ $misitambahan->kode_misi }}">
+                <small id="kodemisi" class="form-text text-muted"></small>
+            </div>           
             <div class="form-group">
                 <label for="examplekodemisi">Kode Misi</label>
                 <input type="text" name="kode_misi" class="form-control" id="examplekodemisi" aria-describedby="kodetransaksi" placeholder="Kode Transaksi" value="{{ $misitambahan->kode_misi }}">

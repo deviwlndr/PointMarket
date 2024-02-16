@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FormPembelian extends Model
+class Slides extends Model
 {
-    protected $table = 'formpembelian';
+    protected $table = 'slides';
+    protected $fillable = ['title', 'content'];
     use HasFactory;
-    protected $guarded = ['id'];
 }

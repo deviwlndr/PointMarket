@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class MisiTambahan extends Model
 {
-    protected $table = 'misitambahan';
+    protected $table = 'misi_tambahan';
     use HasFactory;
-    protected $guarded = ['id'];
+    protected $guarded = ['id_misi'];
+    protected $primaryKey = 'id_misi'; // Sesuaikan dengan nama kolom kunci utama Anda
+    protected $keyType = 'string';
 }

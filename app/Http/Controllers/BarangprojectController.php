@@ -25,7 +25,7 @@ class BarangprojectController extends Controller
        //Barangproject::create($request->except(['_token','submit']));
        //return redirect('/barangproject');
        $request->validate([
-        'kode' => 'required',
+        'kode_barang' => 'required',
         'nama_barang' => 'required',
         'deskripsi' => 'required',
         'harga_point' => 'required|numeric|min:0',
@@ -33,7 +33,7 @@ class BarangprojectController extends Controller
     ]);
 
     Barangproject::create([
-        'kode' => $request->kode,
+        'kode_barang' => $request->kode_barang,
         'nama_barang' => $request->nama_barang,
         'deskripsi' => $request->deskripsi,
         'harga_point' => $request->harga_point,
@@ -43,15 +43,15 @@ class BarangprojectController extends Controller
 
     public function edit($id)
     {
-        $barangproject = Barangproject::find($id);
+        $barangproject = Barangproject::where('id_barang', $id)->first();
         return view('barangproject.edit',compact(['barangproject']));
     }
 
-    public function update($id, Request $request) 
+    public function update(Request $request, $id) 
     {
-        $barangproject = Barangproject::find($id);
+        $barangproject = Barangproject::where('id_barang', $id)->firstOrFail();
        $barangproject-> update ([
-            'kode'=> $request->kode,
+            'kode_barang'=> $request->kode_barang,
             'nama_barang'=> $request->nama_barang,
             'deskripsi'=> $request->deskripsi,
             'harga_point'=> $request->harga_point,
@@ -63,6 +63,6 @@ class BarangprojectController extends Controller
     {
         $barangproject = Barangproject::find($id);
         $barangproject->delete();
-        return redirect('/barangproject');
+        return redirect('/barangproject')->with('danger', 'Data Barang Project Berhasil Dihapus!');
     }
 }

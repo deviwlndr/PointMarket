@@ -12,4 +12,8 @@ class MHS_BarangProjectController extends Controller
         $barangprojects = Barangproject::all();
         return view('dashboardmahasiswa.mhs_barangproject', compact('barangprojects'));
     }
+    public function create()
+    {
+        return view('riwayat_pembelian_jenis_transaksi.create');
+    }
 }

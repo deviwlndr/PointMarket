@@ -1,10 +1,10 @@
 @extends('layouts.auth')
 
 @section('konten')
-<div class="col-lg-6 mx-auto">
+<div class="col-lg-5 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="" alt="Point Market">
+                <h2>Point Market</h2>
               </div>
               <h4>New here?</h4>
               <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
@@ -46,14 +46,6 @@
                   @enderror
                 </div>
                 </div>
-                <div class="mb-4">
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input">
-                      I agree to all Terms &amp; Conditions
-                    <i class="input-helper"></i></label>
-                  </div>
-                </div>*
                 <div class="mt-3">
                     <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">SIGN UP</button>
                 </div>

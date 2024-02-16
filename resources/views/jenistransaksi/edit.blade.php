@@ -6,7 +6,7 @@
         <div class="card-body">
             <h4 class="card-title">Edit Jenis Transaksi</h4>
             <p class="card-description"></p>            
-            <form action="/jenistransaksi/{{ $jenistransaksi->id }}" method="POST">
+            <form action="/jenistransaksi/{{ $jenistransaksi->id_jenis_transaksi }}" method="POST">
                 @method('put')
                 @csrf
                 

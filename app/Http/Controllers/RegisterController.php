@@ -34,11 +34,4 @@ class RegisterController extends Controller
         //$request->session()->flash('success', 'Resgistration was successful! Lest Login!');
         return redirect('/login')->with('success', 'Resgistration was successful! Lest Login!');
     }
- 
-
-
-
-    
-    
-
 }

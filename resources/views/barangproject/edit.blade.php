@@ -5,12 +5,12 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Edit Barang Project</h4>
-                <form action="/barangproject/{{$barangproject->id}}" method="POST">
+                <form action="/barangproject/{{$barangproject->id_barang}}" method="POST">
                 @method('put')
                 @csrf
                 <div class="mb-3">
-                        <label for="disabledTextInput" class="form-label">Kode</label>
-                        <input type="text" name="kode" id="disabledTextInput" class="form-control" placeholder="" value="{{$barangproject->kode}}">
+                        <label for="disabledTextInput" class="form-label">Kode Barang</label>
+                        <input type="text" name="kode_barang" id="disabledTextInput" class="form-control" placeholder="" value="{{$barangproject->kode_barang}}">
                 </div>
                 <div class="mb-3">
                         <label for="disabledTextInput" class="form-label">Nama Barang</label>

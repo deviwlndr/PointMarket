@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class MHS_MisiTambahan extends Model
 {
-    protected $table = 'misitambahan';
+    protected $table = 'misi_tambahan';
     use HasFactory;
     protected $guarded = ['id'];
 }

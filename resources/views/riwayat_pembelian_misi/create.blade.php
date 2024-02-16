@@ -15,11 +15,15 @@
                 </div>
                 <div class="form-group">
                     <label for="examplekode_pembelian">Kode Misi</label>
-                    <input type="text" name="kode_pembelian" class="form-control" id="examplekode_pembelian" aria-describedby="kode_pembelian" placeholder="Kode Pembelian">
+                    <input type="text" name="kode_misi" class="form-control" id="examplekode_misi" aria-describedby="kode_misi" placeholder="Kode Misi">
                 </div>
                 <div class="form-group">
-                    <label for="examplenama_pembelian">Nama Misi</label>
-                    <input type="text" name="nama_pembelian" class="form-control" id="examplenama_pembelian" aria-describedby="nama_pembelian" placeholder="Nama Pembelian">
+                    <label for="examplenama_misi">Nama Misi</label>
+                    <input type="text" name="nama_misi" class="form-control" id="examplenama_barang" aria-describedby="nama_barang" placeholder="Nama Misi">
+                </div>
+                <div class="form-group">
+                    <label for="examplenama_misi">Point</label>
+                    <input type="text" name="point" class="form-control" id="examplenama_barang" aria-describedby="nama_barang" placeholder="Nama Misi">
                 </div>
                 <div class="form-group">
                     <label for="tanggal_pembelian">Tanggal Transaksi:</label>

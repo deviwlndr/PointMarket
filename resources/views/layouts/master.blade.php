@@ -5,7 +5,6 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
   <!-- Tautan CSS Bootstrap -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-
 <!-- Tautan CSS Kustom (Jika Ada) -->
 <link href="{{ asset('path/to/custom.css') }}" rel="stylesheet">
   <!-- Required meta tags -->
@@ -25,7 +24,20 @@
 </head>
 <body>
  <html> 
-  
+  <style>
+ /* Tambahkan gaya sesuai kebutuhan */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider-container {
+    margin-bottom: 20px; /* Sesuaikan margin dengan kebutuhan desain Anda */
+}
+</style>
+
+
   
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -43,6 +55,15 @@
           <span class="typcn typcn-th-menu"></span>
         </button>
       </div>
+      <!-- Tambahkan formulir pencarian di dalam navbar -->
+  <form class="form-inline ml-auto" action="{{ url('/search') }}" method="GET">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Cari " name="npm" value="">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="submit">Cari</button>
+      </div>
+    </div>
+  </form>
     </nav>
     
     <div class="container-fluid page-body-wrapper">
@@ -189,10 +210,6 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link {{ request()->is('login') ? 'active' : '' }}" href="/login"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link {{ request()->is('register') ? 'active' : '' }}" href="/register"> Register </a></li>
-                <li class="nav-item"> <a class="nav-link {{ request()->is('riwayat_pembelian/admin') ? 'active' : '' }}" href="/riwayat_pembelian/admin"> Riwayat Pembelian Misi</a></li>
-                <li class="nav-item"> <a class="nav-link {{ request()->is('riwayat_pembelian_barang/admin') ? 'active' : '' }}" href="/riwayat_pembelian_barang/admin"> Riwayat Pembelian Barang</a></li>
                 <li class="nav-item"> <a class="nav-link {{ request()->is('mahasiswa') ? 'active' : '' }}" href="/mahasiswa"> Level Mahasiswa </a></li>
               </ul>
             </div>
@@ -207,14 +224,13 @@
       <div class="card">
                 <div class="card-body">
         <div class="row" >
-          @if(session()->has('success'))
-          <div class="col-12"> 
-            <div class="alert laert-success">{{ session('success') }}</div>
-           @endif 
+          
           @yield('konten')
           
 
+
         </div>
+        
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         

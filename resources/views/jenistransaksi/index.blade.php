@@ -11,6 +11,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>ID Transaksi</th>
                                 <th>Nama Transaksi</th>
                                 <th>Deskripsi</th>
                                 <th>Point</th>
@@ -28,20 +29,17 @@
                                 {!! session('danger') !!}
                             </div>
                         @endif
-
-
                             @foreach($jenistransaksis as $jenistransaksi)
-
                                 <tr>
-                                    
+                                    <td>{{ $jenistransaksi->id_jenis_transaksi }}</td>
                                     <td>{{ $jenistransaksi->nama_transaksi }}</td>
                                     <td id="deskripsiCell{{ $jenistransaksi->id }}" class="deskripsi-cell">{{ $jenistransaksi->deskripsi }}</td>
                                     <td><label class="badge badge-danger">{{ $jenistransaksi->point }}</label></td>
                                     <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                 
-                                <a href="/jenistransaksi/{{ $jenistransaksi->id }}/edit" class="btn btn-warning mr-5">Edit</a>
-                                <form action="/jenistransaksi/{{ $jenistransaksi->id }}" method="POST">
+                                <a href="/jenistransaksi/{{ $jenistransaksi->id_jenis_transaksi }}/edit" class="btn btn-warning mr-5">Edit</a>
+                                <form action="/jenistransaksi/{{ $jenistransaksi->id_jenis_transaksi }}" method="POST">
                                   @method("DELETE")
                                   @csrf
                                   <input type="submit" class="btn btn-danger " value="Delete">

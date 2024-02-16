@@ -30,9 +30,8 @@ class LoginController extends Controller
         // Authentication passed
         return redirect()->intended('/dashboard')->with('success', 'Login was successful!');
     }
-
         // Authentication failed
         return back()->with('loginError', 'Login failed!')->withInput($request->only('npm'));
     }
-
 }
+

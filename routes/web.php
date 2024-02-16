@@ -11,10 +11,15 @@ use App\Http\Controllers\JenisTransaksiController;
 use App\Http\Controllers\LevelMahasiswaController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MHS_BarangProjectController;
+use App\Http\Controllers\MHS_JenisTransaksiController;
 use App\Http\Controllers\MHS_MisiTambahanController;
 use App\Http\Controllers\MHSPointController;
 use App\Http\Controllers\RiwayatPembelianBarangController;
 use App\Http\Controllers\RiwayatPembelianController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SlideController;
+use App\Models\MHS_MisiTambahan;
+use App\Models\RiwayatPembelianBarang;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -37,9 +42,9 @@ Route::get('/dashboard',  [\App\Http\Controllers\DashboardController::class, 'in
 Route::get('/misitambahan',  [\App\Http\Controllers\MisitambahanController::class, 'index']);
 Route::post('/misitambahan',  [\App\Http\Controllers\MisitambahanController::class, 'store']);
 Route::get('/misitambahan/create',  [\App\Http\Controllers\MisitambahanController::class, 'create']);
-Route::get('/misitambahan/{id}/edit',  [\App\Http\Controllers\MisitambahanController::class, 'edit']);
-Route::put('/misitambahan/{id}',  [\App\Http\Controllers\MisitambahanController::class, 'update']);
-Route::delete('/misitambahan/{id}',  [\App\Http\Controllers\MisitambahanController::class, 'destroy']);
+Route::get('/misitambahan/{id_misi}/edit',  [\App\Http\Controllers\MisitambahanController::class, 'edit']);
+Route::put('/misitambahan/{id_misi}',  [\App\Http\Controllers\MisitambahanController::class, 'update']);
+Route::delete('/misitambahan/{id_misi}',  [\App\Http\Controllers\MisitambahanController::class, 'destroy']);
 
 //Route Barang Project
 Route::get('/barangproject',[BarangprojectController::class,'project'] );
@@ -53,9 +58,9 @@ Route::delete('/barangproject/{id}',[BarangprojectController::class,'destroy']);
 Route::get('/jenistransaksi',[JenisTransaksiController::class,'index'] );
 Route::post('/jenistransaksi',[JenisTransaksiController::class,'store'] );
 Route::get('jenistransaksi/create',[JenisTransaksiController::class,'create'] );
-Route::get('/jenistransaksi/{id}/edit', [JenisTransaksiController::class, 'edit']);
-Route::put('/jenistransaksi/{id}', [JenisTransaksiController::class, 'update']);
-Route::delete('/jenistransaksi/{id}', [JenisTransaksiController::class, 'destroy']);
+Route::get('/jenistransaksi/{id_jenis_transaksi}/edit', [JenisTransaksiController::class, 'edit']);
+Route::put('/jenistransaksi/{id_jenis_transaksi}', [JenisTransaksiController::class, 'update']);
+Route::delete('/jenistransaksi/{id_jenis_transaksi}', [JenisTransaksiController::class, 'destroy']);
 
 //route register
 Route::get('/register', [RegisterController::class, 'index']);
@@ -65,19 +70,12 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'store']);
 
-//route riwayat pembelian admin
-Route::get('/riwayat_pembelian/admin', [RiwayatPembelianController::class, 'index']);
-Route::get('/riwayat_pembelian_barang/admin', [RiwayatPembelianBarangController::class, 'index']);
 
 //Route riwayat pembelian misi mahasiswa dan ambil misi
-Route::get('/riwayat_pembelian_misi', [RiwayatPembelianController::class, 'index_mahasiswa_misi']);
-Route::post('/riwayat_pembelian_misi', [RiwayatPembelianController::class, 'store']);
-Route::get('/riwayat_pembelian_misi/create{id}', [RiwayatPembelianController::class, 'create']);
+Route::get('/riwayat_pembelian_jenis_transaksi/create', [MHS_MisiTambahan::class, 'create']);
 
 //Route riwayat pembelian barang mahasiswa dan pembelian barang
-Route::get('/riwayat_pembelian_barang', [RiwayatPembelianBarangController::class, 'index_mahasiswa_barang']);
-Route::post('/riwayat_pembelian_barang', [RiwayatPembelianBarangController::class, 'store']);
-Route::get('/riwayat_pembelian_barang/create', [RiwayatPembelianBarangController::class, 'create']);
+Route::get('/riwayat_pembelian_jenis_transaksi/create', [MHS_BarangProjectController::class, 'create']);
 
 //route untuk mahasiswa
 Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
@@ -90,9 +88,21 @@ Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
 //route dashboard mahasiswa 
 Route::get('/dashboard_mahasiswa',  [\App\Http\Controllers\DashboardMahasiswaController::class, 'index']);
 Route::get('/level_mahasiswa', [LevelMahasiswaController::class, 'user']);
-Route::get('/level_mahasiswa/point', [MHSPointController::class, 'point']);
 Route::get('/mhs_misitambahan', [MHS_MisiTambahanController::class, 'index']);
 Route::get('/mhs_barangproject', [MHS_BarangProjectController::class, 'index']);
+Route::get('/mhs_jenistransaksi', [MHS_JenisTransaksiController::class, 'index']);
+
+//Riwayat mhs jenis transaksi
+
+Route::get('/riwayat_pembelian_jenis_transaksi', [MHS_JenisTransaksiController::class, 'index_mahasiswa_jenis']);
+Route::get('/riwayat_pembelian_jenis_transaksi/create', [MHS_JenisTransaksiController::class, 'create']);
+Route::post('/riwayat_pembelian_jenis_transaksi', [MHS_JenisTransaksiController::class, 'store']);
+
+Route::get('/search', [SearchController::class, 'search_admin']);
+Route::get('/search', [SearchController::class, 'search_mhs']);
+
+Route::resource('slides', SlideController::class);
+
 
 
 

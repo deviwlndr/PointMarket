@@ -10,7 +10,7 @@
                 @csrf
                 <div class="mb-3">
                 <label for="disabledTextInput" class="form-label">Kode</label>
-                <input type="text" name="kode" id="disabledTextInput" class="form-control" placeholder="">
+                <input type="text" name="kode_barang" id="disabledTextInput" class="form-control" placeholder="">
                 </div>
                 <div class="mb-3">
                 <label for="disabledTextInput" class="form-label">Nama Barang</label>

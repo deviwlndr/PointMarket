@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\MHS_MisiTambahan;
+use App\Models\RiwayatPembelian;
+use App\Models\RiwayatPembelianBarang;
+use App\Models\RiwayatPembelianJenisTransaksi;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -10,7 +14,11 @@ class MahasiswaController extends Controller
     public function index()
     {
         $mahasiswas = Mahasiswa::all();
-        return view('mahasiswa.index', compact('mahasiswas'));
+        $riwayat_pembelian_jeniss = RiwayatPembelianJenisTransaksi::all();
+        $riwayat_pembelians = RiwayatPembelianJenisTransaksi::all();
+        $riwayat_pembelian_barangs= RiwayatPembelianJenisTransaksi::all();
+        $rekap_pembelian = $riwayat_pembelian_jeniss->groupBy('npm');
+        return view('mahasiswa.index', compact('mahasiswas', 'riwayat_pembelian_jeniss', 'rekap_pembelian','riwayat_pembelians', 'riwayat_pembelian_barangs'));
     }
 
     public function create()

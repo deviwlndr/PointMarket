@@ -4,7 +4,7 @@
 <div class="container mr-5">
     <div class="card">
         <div class="card-body">
-        <div class="card-title grid text-center bg-primary p-3 rounded " style="width: 50%;" >
+        <div class="card-title" style="width: 50%;" >
             <div class="g-col-3 g-start-2">Add Level Mahasiswa</div>
         </div>
             <p class="card-description"></p>

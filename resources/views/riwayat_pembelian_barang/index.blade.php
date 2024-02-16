@@ -20,11 +20,11 @@
                             </div>
                         @endif
                         <tr>
-                          <th>id</th>
+                          <th>ID Transaksi</th>
                           <th>NPM</th>
                           <th>Kode Barang</th>
                           <th>Nama Barang</th>
-                          <th>Deskripsi</th>
+                          <th>Point</th>
                           <th>Tanggal Transaksi</th>
 
                          
@@ -33,17 +33,18 @@
                       <tbody>
                         <tr>
                         @foreach($riwayat_pembelian_barangs as $riwayat_pembelian)
-                        <tr>
-                        <td>{{ $riwayat_pembelian->id }}</td>
-                        <td>{{ $riwayat_pembelian->npm }}</td>
-                        <td>{{ $riwayat_pembelian->kode_pembelian }}</td>
-                        <td>{{ $riwayat_pembelian->nama_barang }}</td>                        
-                        <td>{{ $riwayat_pembelian->deskripsi }}</td>                        
-                        <td>{{ $riwayat_pembelian->tanggap_pembelian }}</td>                             
-                              </form>
-                            </td>
-                        </tr>
-                    @endforeach
+                        @if($riwayat_pembelian_barangs->npm == $npm)
+                          <tr>
+                          <td>{{ $riwayat_pembelian->id_transaksi_barang }}</td>
+                          <td>{{ $riwayat_pembelian->kode_barang }}</td>
+                          <td>{{ $riwayat_pembelian->nama_barang }}</td>                        
+                          <td>{{ $riwayat_pembelian->point }}</td>                        
+                          <td>{{ $riwayat_pembelian->tanggal_pembelian }}</td>                             
+                                </form>
+                              </td>
+                          </tr>
+                          @endif
+                        @endforeach
                         </tr>
                         <tr>
                           <td></td>

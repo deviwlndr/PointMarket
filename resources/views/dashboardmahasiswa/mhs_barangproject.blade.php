@@ -11,18 +11,20 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>KODE</th>
-                                <th>NAMA BARANG</th>
-                                <th>DESKRIPSI</th>
-                                <th>HARGA POINT</th>
-                                <th>AKSI</th>
+                                <th>ID Barang</th>
+                                <th>Kode Barang</th>
+                                <th>Nama Barang</th>
+                                <th>Deskripsi</th>
+                                <th>Harga Point</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($barangprojects as $p)
                                 <tr>
                                     
-                                    <td>{{ $p->kode}}</td>
+                                    <td>{{ $p->id_barang}}</td>
+                                    <td>{{ $p->kode_barang}}</td>
                                     <td>{{$p->nama_barang}}</td>
                                     <td id="deskripsiCell{{ $p->id }}" class="deskripsi-cell">{{ $p->deskripsi }}
                                        
@@ -30,7 +32,7 @@
                                     <td><label class="badge badge-danger">{{$p->harga_point}}</label></td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="/riwayat_pembelian_barang/create" class="btn btn-warning mr-5">Beli</a>
+                                            <a href="/riwayat_pembelian_jenis_transaksi/create" class="btn btn-warning mr-5">Beli</a>
                                         </div>
                                     </td>
                                 </tr>

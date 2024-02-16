@@ -37,21 +37,24 @@
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
         <span class="typcn typcn-th-menu"></span>
     </button>
-</div>
-
-      
-          
-            
-              
-              
+</div>   
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="typcn typcn-th-menu"></span>
         </button>
       </div>
+
+   <!-- Tambahkan formulir pencarian di dalam navbar -->
+  <form class="form-inline ml-auto" action="{{ url('/search') }}" method="GET">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Cari NPM..." name="npm" value="{{ request('npm') }}">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="submit">Cari</button>
+      </div>
+    </div>
+  </form>
     </nav>
     
-    </nav>
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
       <div class="theme-setting-wrapper">
@@ -172,17 +175,16 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="erro">
               <i class="typcn typcn-user-add-outline menu-icon"></i>
-              <span class="menu-title">Mahasiswa</span>
+              <span class="menu-title">Master Data</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="error">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link {{ request()->is('level_mahasiswa/point') ? 'active' : '' }}" href="/level_mahasiswa/point">Level Mahasiswa</a></li>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('level_mahasiswa/point') ? 'active' : '' }}" href="/level_mahasiswa">Level Mahasiswa</a></li>
                 <li class="nav-item"> <a class="nav-link {{ request()->is('mhs_misitambahan') ? 'active' : '' }}" href="/mhs_misitambahan"> Misi Tambahan </a></li>
                 <li class="nav-item"> <a class="nav-link {{ request()->is('mhs_barangproject') ? 'active' : '' }}" href="/mhs_barangproject"> Barang Project </a></li>
-                <li class="nav-item"> <a class="nav-link {{ request()->is('riwayat_pembelian_misi') ? 'active' : '' }}" href="/riwayat_pembelian_misi">Riwayat Pembelian Misi</a></li>
-                <li class="nav-item"> <a class="nav-link {{ request()->is('riwayat_pembelian_barang') ? 'active' : '' }}" href="/riwayat_pembelian_barang">Riwayat Pembelian Barang</a></li>
-              </ul>
+                <li class="nav-item"> <a class="nav-link {{ request()->is('mhs_jenistransaksi') ? 'active' : '' }}" href="/mhs_jenistransaksi">Jenis Transaksi</a></li>
+                </ul>
             </div>
           </li>
           

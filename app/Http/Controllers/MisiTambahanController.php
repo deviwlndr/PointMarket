@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class MisitambahanController extends Controller
 {
-    //
     public function index()
     {
         $misitambahans = MisiTambahan::all();
@@ -31,28 +30,29 @@ class MisitambahanController extends Controller
     }
 
     public function edit($id)
-    {    
-       $misitambahan = MisiTambahan::find($id);
-        return view('/misitambahan.edit', compact(['misitambahan']));
+    {
+        $misitambahan = MisiTambahan::where('id_misi', $id)->first(); // Perbaiki nama variabel
+        return view('misitambahan.edit', compact('misitambahan'));
     }
 
     public function update(Request $request, $id)
     {
-       $misitambahan = MisiTambahan::find($id);
-       $misitambahan-> update ([
-            'kode_misi'=> $request->kode_misi,
-            'nama_misi'=> $request->nama_misi,
-            'deskripsi'=> $request->deskripsi,
-            'harga_point'=> $request->harga_point,
-           ]);
-           return redirect('/misitambahan')->with('success', 'Data Misi Tambahan Berhasil Diubah.');
+    $misi_tambahan = MisiTambahan::where('id_misi', $id)->firstOrFail();
+
+    $misi_tambahan->update([
+        'kode_misi' => $request->kode_misi,
+        'nama_misi' => $request->nama_misi,
+        'deskripsi' => $request->deskripsi,
+        'harga_point' => $request->harga_point,
+    ]);
+
+    return redirect('/misitambahan')->with('success', 'Data Misi Tambahan Berhasil Diubah.');
     }
 
     public function destroy($id)
     {
-        $misitambahan = MisiTambahan::find($id);
-        $misitambahan->delete();   
-        return redirect('/misitambahan')->with('success', 'Data Misi Tambahan Berhasil Dihapus.');
-    
+        $misi_tambahan = MisiTambahan::find($id);
+        $misi_tambahan->delete();   
+        return redirect('/misitambahan')->with('danger', 'Data Misi Tambahan Berhasil Dihapus.');
     }
 }

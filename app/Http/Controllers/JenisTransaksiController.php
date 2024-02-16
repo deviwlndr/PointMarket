@@ -31,13 +31,13 @@ class JenisTransaksiController extends Controller
 
     public function edit($id)
     {    
-       $jenistransaksi = JenisTransaksi::find($id);
+       $jenistransaksi = JenisTransaksi::where('id_jenis_transaksi', $id)->first();
         return view('/jenistransaksi.edit', compact(['jenistransaksi']));
     }
 
     public function update(Request $request, $id)
     {
-       $jenistransaksi = JenisTransaksi::find($id);
+       $jenistransaksi = JenisTransaksi::where('id_jenis_transaksi', $id)->firstOrFail();
        $jenistransaksi-> update ([
             'nama_transaksi'=> $request->nama_transaksi,
             'deskripsi'=> $request->deskripsi,

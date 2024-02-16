@@ -33,12 +33,9 @@
                             <td><label class="badge badge-danger">{{ $misitambahan->harga_point }}</label></td>
                             <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="/riwayat_pembelian_misi/create {{ $misitambahan->id }}" class="btn btn-warning mr-5">Ambil Misi</a>
+                                <a href="/riwayat_pembelian_jenis_transaksi/create" class="btn btn-warning mr-5">Ambil Misi</a>
                             </div> 
                             </form>
-                              
-                             
-
                             </td>
                         </tr>
                     @endforeach

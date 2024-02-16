@@ -20,10 +20,11 @@
                             </div>
                         @endif
                         <tr>
-                          <th>id</th>
+                          <th>ID Misi</th>
                           <th>NPM</th>
                           <th>Kode Misi</th>
                           <th>Nama Misi</th>
+                          <th>Point</th>
                           <th>Tanggal Transaksi</th>
 
                          
@@ -33,10 +34,11 @@
                         <tr>
                         @foreach($riwayat_pembelians as $riwayat_pembelian)
                         <tr>
-                        <td>{{ $riwayat_pembelian->id }}</td>
+                        <td>{{ $riwayat_pembelian->id_transaksi_misi }}</td>
                         <td>{{ $riwayat_pembelian->npm }}</td>
-                        <td>{{ $riwayat_pembelian->kode_pembelian }}</td>
-                        <td>{{ $riwayat_pembelian->nama_pembelian }}</td>                        
+                        <td>{{ $riwayat_pembelian->kode_misi }}</td>
+                        <td>{{ $riwayat_pembelian->nama_misi}}</td>                        
+                        <td>{{ $riwayat_pembelian->point}}</td>                        
                         <td>{{ $riwayat_pembelian->tanggal_pembelian }}</td>                             
                               </form>
                             </td>
