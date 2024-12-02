@@ -83,9 +83,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        
-
-                    
                                                 </table>
                                             </div>
                     <div class="modal-footer">
