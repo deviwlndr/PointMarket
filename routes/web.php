@@ -14,6 +14,7 @@ use App\Http\Controllers\MHS_BarangProjectController;
 use App\Http\Controllers\MHS_JenisTransaksiController;
 use App\Http\Controllers\MHS_MisiTambahanController;
 use App\Http\Controllers\MHSPointController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RiwayatPembelianBarangController;
 use App\Http\Controllers\RiwayatPembelianController;
 use App\Http\Controllers\SearchController;
@@ -100,6 +101,9 @@ Route::post('/riwayat_pembelian_jenis_transaksi', [MHS_JenisTransaksiController:
 
 Route::get('/search', [SearchController::class, 'search_admin']);
 Route::get('/search', [SearchController::class, 'search_mhs']);
+
+Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth')->name('profile');
+
 
 Route::resource('slides', SlideController::class);
 

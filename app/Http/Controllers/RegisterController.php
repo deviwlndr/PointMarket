@@ -25,6 +25,7 @@ class RegisterController extends Controller
             'npm' => 'required|min:9|max:9',
             'email' => 'required|unique:users',
             'password' => 'required|min:6|max:255',
+            'poin' => 0,
         ]);
         
         $validateData['password'] = Hash::make($validateData['password']);
@@ -34,4 +35,6 @@ class RegisterController extends Controller
         //$request->session()->flash('success', 'Resgistration was successful! Lest Login!');
         return redirect('/login')->with('success', 'Resgistration was successful! Lest Login!');
     }
+
+    
 }

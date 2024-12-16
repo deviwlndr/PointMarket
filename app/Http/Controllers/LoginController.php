@@ -24,12 +24,12 @@ class LoginController extends Controller
         'password' => 'required',
     ]);
 
-    if (Auth::attempt($credentials)) {
+    if (Auth::attempt(['npm' => $request->npm, 'password' => $request->password])) {
         $request->session()->regenerate();
-
-        // Authentication passed
-        return redirect()->intended('/dashboard')->with('success', 'Login was successful!');
-    }
+    
+        // Redirect ke halaman profile setelah login berhasil
+        return redirect()->route('profile')->with('success', 'Login was successful!');
+    }    
         // Authentication failed
         return back()->with('loginError', 'Login failed!')->withInput($request->only('npm'));
     }

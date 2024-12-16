@@ -60,4 +60,6 @@ class MahasiswaController extends Controller
         return redirect('/mahasiswa')->with('success', 'Data Level Mahasiswa Berhasil Dihapus.');
     
     }
+
+    
 }
