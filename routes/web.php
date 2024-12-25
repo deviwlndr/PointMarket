@@ -21,6 +21,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SlideController;
 use App\Models\MHS_MisiTambahan;
 use App\Models\RiwayatPembelianBarang;
+use Illuminate\Support\Facades\Auth;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -70,6 +71,13 @@ Route::post('/register', [RegisterController::class, 'store']);
 //route login
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'store']);
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+
+    return redirect('/');
+})->name('logout');
 
 
 //Route riwayat pembelian misi mahasiswa dan ambil misi
@@ -87,7 +95,7 @@ Route::put('/mahasiswa/{id}', [MahasiswaController::class, 'update']);
 Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
 
 //route dashboard mahasiswa 
-Route::get('/dashboard_mahasiswa',  [\App\Http\Controllers\DashboardMahasiswaController::class, 'index']);
+Route::get('/PointMarket/mahasiswa',  [\App\Http\Controllers\DashboardMahasiswaController::class, 'index']);
 Route::get('/level_mahasiswa', [LevelMahasiswaController::class, 'user']);
 Route::get('/mhs_misitambahan', [MHS_MisiTambahanController::class, 'index']);
 Route::get('/mhs_barangproject', [MHS_BarangProjectController::class, 'index']);
@@ -98,6 +106,15 @@ Route::get('/mhs_jenistransaksi', [MHS_JenisTransaksiController::class, 'index']
 Route::get('/riwayat_pembelian_jenis_transaksi', [MHS_JenisTransaksiController::class, 'index_mahasiswa_jenis']);
 Route::get('/riwayat_pembelian_jenis_transaksi/create', [MHS_JenisTransaksiController::class, 'create']);
 Route::post('/riwayat_pembelian_jenis_transaksi', [MHS_JenisTransaksiController::class, 'store']);
+
+//Riwayat admin
+Route::prefix('admin')->group(function () {
+    Route::get('/misi-pending', [MahasiswaController::class, 'adminMisiPending'])->name('admin.misi.pending');
+    Route::post('/misi-validasi/{id}', [MahasiswaController::class, 'validasiMisi'])->name('admin.misi.validasi');
+});
+
+
+
 
 Route::get('/search', [SearchController::class, 'search_admin']);
 Route::get('/search', [SearchController::class, 'search_mhs']);

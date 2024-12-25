@@ -1,77 +1,81 @@
 @extends('layouts.dashboard_mahasiswa')
 
 @section('konten')
-    <div class="card">
-        <div class="card-body mb-10">
-            <h4 class="card-title">Barang Project</h4>
-            
-            <p class="card-description"></p>
-            <div class="container">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID Barang</th>
-                                <th>Kode Barang</th>
-                                <th>Nama Barang</th>
-                                <th>Deskripsi</th>
-                                <th>Harga Point</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($barangprojects as $p)
-                                <tr>
-                                    
-                                    <td>{{ $p->id_barang}}</td>
-                                    <td>{{ $p->kode_barang}}</td>
-                                    <td>{{$p->nama_barang}}</td>
-                                    <td id="deskripsiCell{{ $p->id }}" class="deskripsi-cell">{{ $p->deskripsi }}
-                                       
-                                    </td>
-                                    <td><label class="badge badge-danger">{{$p->harga_point}}</label></td>
-                                    <td>
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="/riwayat_pembelian_jenis_transaksi/create" class="btn btn-warning mr-5">Beli</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+    <div class="container mt-4">
+        <h4 class="mb-4">Barang Project</h4>
+        <div class="row g-4">
+            @foreach($barangprojects as $p)
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $p->nama_barang }}</h5>
+                                    <p class="text-muted mb-1">Kode Barang: <strong>{{ $p->kode_barang }}</strong></p>
+                                    <p class="text-secondary mb-3">
+                                        <span class="badge bg-danger " >
+                                            <i class="fas fa-coins"></i> Harga Poin: {{ $p->harga_point }}</span>
+                                    </p>
+                                    <p class="deskripsi-cell">
+                                        {{ $p->deskripsi }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+    <a href="/riwayat_pembelian_jenis_transaksi/create" class="btn btn-warning">
+        <i class="fas fa-shopping-cart"></i> Beli
+    </a>
+</div>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".btn-lihat-selengkapnya").on("click", function(e) {
-                e.preventDefault();
-                var id = $(this).data("id");
-                toggleDeskripsi(id);
-            });
-
-            function toggleDeskripsi(id) {
-                // Ganti "deskripsiCell" dengan ID yang sesuai pada elemen <td>
-                var deskripsiCell = $("#deskripsiCell" + id);
-                deskripsiCell.toggleClass("show-full"); // Tambahkan atau hapus kelas "show-full"
-            }
-        });
-    </script>
-
     <style>
-        /* Gaya CSS untuk mengatur tinggi deskripsi-cell */
-        .deskripsi-cell {
-            max-height: 50px; /* Tinggi maksimum awal */
+        /* Gaya untuk card */
+        .card {
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
             overflow: hidden;
-            transition: max-height 0.3s ease-out; /* Efek transisi */
+            transition: transform 0.2s ease;
         }
 
-        /* Gaya CSS untuk menampilkan seluruh isi saat kelas show-full diaktifkan */
-        .deskripsi-cell.show-full {
-            max-height: none;
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 0.75rem;
+        }
+
+        /* Gaya khusus untuk tampilan persegi panjang */
+        .row.g-0 {
+            align-items: center;
+        }
+
+        .card-footer {
+            background-color: #f8f9fa;
+            border-left: 1px solid #eaeaea;
+            padding: 15px;
+        }
+
+        .btn-warning {
+            font-weight: bold;
+            color: #fff;
         }
     </style>
 @endsection

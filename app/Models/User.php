@@ -10,7 +10,10 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-
+    public function mahasiswa()
+    {
+        return $this->hasOne(Mahasiswa::class, 'npm', 'npm');
+    } 
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

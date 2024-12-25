@@ -14,6 +14,7 @@
                                 <th>Transaksi</th>
                                 <th>Deskripsi</th>
                                 <th>Point</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,7 +34,14 @@
                                     <td>{{ $jenistransaksi->transaksi }}</td>
                                     <td id="deskripsiCell{{ $jenistransaksi->id }}" class="deskripsi-cell">{{ $jenistransaksi->deskripsi }}</td>
                                     <td><label class="badge badge-danger">{{ $jenistransaksi->point }}</label></td>
-                                    <td>
+                                                        <!-- <td>
+                                        @if ($misi->file_bukti)
+                                            <a href="{{ asset('storage/' . $misi->file_bukti) }}" target="_blank">Lihat Bukti</a>
+                                        @else
+                                            Tidak ada bukti
+                                        @endif
+                                    </td> -->
+                                    
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                 </form>
                                     </td>
@@ -45,4 +53,5 @@
             </div>
         </div>
     </div>
+    
 @endsection

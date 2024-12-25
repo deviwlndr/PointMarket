@@ -1,56 +1,49 @@
 @extends('layouts.dashboard_mahasiswa')
 
 @section('konten')
+<style>
+    .btn {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+</style>
 
-<div class="card ml-5">
-                <div class="card-body ">
-                  <h4 class="card-title">Misi Tambahan</h4>
-                  <p class="card-description">
-                    
-                  </p>
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        
-                        <tr>
-                          <th>Kode Misi</th>
-                          <th>Nama Misi</th>
-                          <th>Deskripsi</th>
-                          <th>Harga Point</th>
-                          <th>Action</th>
-                        </tr>
-                        
-                      </thead>
-                      <tbody>
-                        <tr>
-                        @foreach($misitambahans as $misitambahan)
-                        <tr>
-                            <td>{{ $misitambahan->kode_misi }}</td>
-                            <!-- Tambahkan kolom lainnya sesuai dengan struktur tabel Anda -->
-                            
-                            <td>{{ $misitambahan->nama_misi }}</td>
-                            <td>{{ $misitambahan->deskripsi }}</td>
-                            <td><label class="badge badge-danger">{{ $misitambahan->harga_point }}</label></td>
-                            <td>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="/riwayat_pembelian_jenis_transaksi/create" class="btn btn-warning mr-5">Ambil Misi</a>
-                            </div> 
-                            </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tr>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td><label class="badge badge-warning"></label></td>
-                        </tr>
-                        
-                      </tbody>
-                    </table>
-                  </div>
+<div class="container mt-4 d-flex justify-content-center">
+    <h4 class="mb-4"></h4>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach($misitambahans as $misitambahan)
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <span class="badge bg-primary text-white mb-2">Misi Tambahan</span>
+                    <h5 class="card-title">{{ $misitambahan->nama_misi }}</h5>
+                    <p class="text-muted">
+                    <span class="badge bg-danger " >
+                    <i class="fas fa-coins"></i>
+                    Poin: {{ $misitambahan->harga_point }}</p></span>
+
+                    <!-- Deskripsi langsung ditampilkan -->
+                    <div class="deskripsi mt-3 p-3 bg-light border rounded">
+                        <h6 class="text-secondary">Deskripsi</h6>
+                        <p class="text-dark mb-0">
+                            {{ $misitambahan->deskripsi }}
+                        </p>
+                    </div>
+
+                    <!-- Tombol Ambil Misi -->
+                    <a href="/riwayat_pembelian_jenis_transaksi/create" 
+                    class="btn btn-warning">
+                    Ambil Misi
+                    <i class="fa-solid fa-pen"></i>
+                </a>
                 </div>
-              </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
+
 @endsection
-                        

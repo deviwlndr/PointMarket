@@ -10,7 +10,7 @@ class RiwayatPembelianJenisTransaksi extends Model
     protected $table = 'riwayat_transaksi';
     use HasFactory;
 
-    protected $fillable = ['id_transaksi', 'npm', 'transaksi', 'point', 'tanggal_transaksi', 'id_jenis_transaksi'];
+    protected $fillable = ['id_transaksi', 'npm', 'transaksi', 'point', 'tanggal_transaksi', 'id_jenis_transaksi', 'file_bukti'];
     protected $primaryKey = 'id_transaksi_jenis'; // Kolom ini yang akan dianggap sebagai primary key
     protected $keyType = 'string';
     public $incrementing = false; 

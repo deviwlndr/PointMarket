@@ -31,6 +31,7 @@
                                         <td>{{ $jenistransaksi->id_transaksi }}</td>
                                         <td>{{ $jenistransaksi->transaksi }}</td>
                                         <td><label class="badge badge-danger">{{ $jenistransaksi->point }}</label></td>
+                                        <td>{{ $jenistransaksi->tanggal_transaksi }}</td>
                                     </tr>
                                 @endif
                             @endforeach

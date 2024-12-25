@@ -10,4 +10,5 @@ class Login extends Model
     protected $table = 'users';
     use HasFactory;
     protected $guarded = ['id'];
+   
 }

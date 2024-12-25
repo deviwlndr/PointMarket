@@ -18,8 +18,11 @@ class MahasiswaController extends Controller
         $riwayat_pembelians = RiwayatPembelianJenisTransaksi::all();
         $riwayat_pembelian_barangs= RiwayatPembelianJenisTransaksi::all();
         $rekap_pembelian = $riwayat_pembelian_jeniss->groupBy('npm');
+       
+        
         return view('mahasiswa.index', compact('mahasiswas', 'riwayat_pembelian_jeniss', 'rekap_pembelian','riwayat_pembelians', 'riwayat_pembelian_barangs'));
     }
+    
 
     public function create()
     {
@@ -61,5 +64,4 @@ class MahasiswaController extends Controller
     
     }
 
-    
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             // Menambah kolom poin ke tabel users
-            $table->integer('level')->default(0); // Default 0, sesuaikan tipe data sesuai kebutuhan
+           // Default 0, sesuaikan tipe data sesuai kebutuhan
         });
     }
 

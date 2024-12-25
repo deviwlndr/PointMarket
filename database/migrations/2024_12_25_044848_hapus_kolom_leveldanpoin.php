@@ -9,19 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            // Default 0, sesuaikan tipe data sesuai kebutuhan
-        });
+        //
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
             // Menghapus kolom poin jika migration dibatalkan
            
             $table->dropColumn('level');
+           
+          
         });
     }
 };

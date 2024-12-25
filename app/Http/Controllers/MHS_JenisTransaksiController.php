@@ -35,9 +35,36 @@ class MHS_JenisTransaksiController extends Controller
             'transaksi' => $request->transaksi,
             'point' => $request->point,
             'tanggal_transaksi' => $request->tanggal_transaksi,
+            'file_bukti' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:2048',
             'id_jenis_transaksi' => $request->input('id_jenis_transaksi'),
         ]);
+
+        // Proses data
+        $data = $request->all();
+        $data['status'] = 'pending'; // Set status awal
+
+        if ($request->hasFile('file_bukti')) {
+            $path = $request->file('file_bukti')->store('bukti_misi', 'public'); // Path otomatis dibuat
+            $data['file_bukti'] = $path; // Simpan path ke dalam array data
+        }
         
-        return redirect('/level_mahasiswa')->with('success', 'Transaksi berhasil disimpan');
+
+        RiwayatPembelianJenisTransaksi::create($data);
+        
+        return redirect('/level_mahasiswa')->with('success', 'Misi berhasil diajukan dan menunggu validasi admin.');
     }
+
+    public function validasiMisi($id)
+    {
+    // Cari misi berdasarkan ID
+    $misi = RiwayatPembelianJenisTransaksi::findOrFail($id);
+
+    // Ubah status menjadi completed
+    $misi->status = 'completed';
+    $misi->save();
+
+    return redirect()->back()->with('success', 'Misi berhasil divalidasi.');
+    }
+
+
 }
