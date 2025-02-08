@@ -18,12 +18,12 @@
                         </thead>
                         <tbody>
                             @if(session()->has('success'))
-                                <div class="alert alert-success">
+                                <div class="custom-alert alert alert-success">
                                     {!! session('success') !!}
                                 </div>
                             @endif
                             @if(session()->has('danger'))
-                                <div class="alert alert-danger">
+                                <div class="custom-alert alert alert-danger">
                                     {!! session('danger') !!}
                                 </div>
                             @endif

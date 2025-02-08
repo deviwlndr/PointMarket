@@ -1,8 +1,4 @@
-<!-- Tautan CSS Kustom (Jika Ada) -->
-<link href="{{ asset('path/to/custom.css') }}" rel="stylesheet">
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <title>Point Market</title>
 <!-- base:css -->
 <link rel="stylesheet" href="{{ asset ('vendors/typicons/typicons.css') }}">
@@ -23,107 +19,127 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="{{ asset('js/alertTimeout.js') }}"></script>
+<script src="{{ asset('js/getmisi.js') }}"></script>
 <script src="{{ asset('js/confirm.js') }}"></script>
 <style>
-  /* Navbar Styling */
+/* Navbar Styling */
 .custom-navbar {
-  background-color: #f8f9fa; /* Latar belakang putih lembut */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan halus */
-  padding: 1rem;
-  font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa; /* Latar belakang putih lembut */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+    padding: 0.8rem 1.5rem;
+    font-family: 'Poppins', sans-serif;
 }
 
-.custom-navbar .navbar-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #dc5f7e; /* Warna merah muda */
-  text-transform: uppercase;
+/* Logo Styling */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #5d6de8; /* Warna biru */
+    text-transform: uppercase;
 }
 
-.custom-navbar .navbar-brand strong {
-  color: #5d6de8; /* Warna biru */
+.navbar-brand span:first-child {
+    color: #5d6de8; /* Warna biru untuk "Point" */
 }
 
-.custom-navbar .navbar-toggler {
-  border: none;
+.navbar-brand span:last-child {
+    color: #dc5f7e; /* Warna merah muda untuk "Market" */
 }
 
-.custom-navbar .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc5f7e' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(220, 95, 126, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+.navbar-brand img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%; /* Membuat logo berbentuk lingkaran */
+    transform: scale(1.2); 
 }
 
-.custom-navbar .nav-link {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #5d6de8; /* Warna biru */
-  margin-left: 10px;
-  transition: color 0.3s ease-in-out, transform 0.3s ease;
-  text-transform: capitalize; /* Huruf awal kapital */
+/* Menu Links */
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #5d6de8; /* Warna biru */
+    margin-left: 15px;
+    text-transform: capitalize; /* Huruf awal kapital */
+    transition: color 0.3s ease-in-out, transform 0.3s ease;
 }
 
-.custom-navbar .nav-link:hover {
-  color: #dc5f7e; /* Warna merah muda saat hover */
-  transform: translateY(-2px);
+.navbar-nav .nav-link:hover {
+    color: #dc5f7e; /* Warna merah muda saat hover */
+    transform: translateY(-2px); /* Efek hover */
 }
 
-.custom-navbar .nav-link.active {
-  color: #dc5f7e;
-  font-weight: 700;
+.navbar-nav .nav-link.active {
+    color: #dc5f7e; /* Warna merah muda untuk menu aktif */
+    font-weight: 700;
 }
 
-.custom-navbar .search-input {
-  border: 1px solid #5d6de8; /* Warna biru */
-  border-radius: 30px 0 0 30px;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  transition: border-color 0.3s, box-shadow 0.3s;
+/* Pencarian Styling */
+.input-group {
+    max-width: 300px;
 }
 
-.custom-navbar .search-input:focus {
-  border-color: #dc5f7e; /* Merah muda */
-  box-shadow: 0 0 5px rgba(220, 95, 126, 0.5);
-  outline: none;
+.input-group .form-control {
+    border-radius: 20px 0 0 20px;
+    border-color: #5d6de8;
+    font-size: 0.9rem;
 }
 
-.custom-navbar .btn-search {
-  background-color: #5d6de8; /* Biru */
-  color: #ffffff;
-  border: none;
-  border-radius: 0 30px 30px 0;
-  font-size: 1rem;
-  transition: background-color 0.3s, color 0.3s;
+.input-group .form-control:focus {
+    border-color: #dc5f7e; /* Warna merah muda saat fokus */
+    box-shadow: 0 0 5px rgba(220, 95, 126, 0.5);
 }
 
-.custom-navbar .btn-search:hover {
-  background-color: #dc5f7e; /* Merah muda */
-  color: #ffffff;
+.input-group .btn-primary {
+    background-color: #5d6de8;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.custom-navbar .btn-logout {
-  background-color: #dc5f7e; /* Merah muda */
-  color: #ffffff;
-  border: none;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+.input-group .btn-primary:hover {
+    background-color: #dc5f7e;
+    transform: scale(1.05);
 }
 
-.custom-navbar .btn-logout:hover {
-  background-color: #5d6de8; /* Biru */
-  transform: scale(1.05);
+/* Logout Button */
+.btn-logout {
+    background-color: #dc5f7e; /* Warna merah muda */
+    color: #ffffff;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
+.btn-logout:hover {
+    background-color: #5d6de8; /* Warna biru */
+    transform: scale(1.05);
+}
 </style>
 
 <nav class="navbar navbar-expand-lg custom-navbar">
-  <div class="container-fluid">
-    <!-- Nama Aplikasi -->
-    <a class="navbar-brand" href="/profile">
-      Point <strong>Market</strong>
-    </a>
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="/profile">
+    <img src="{{ asset('images/logo.svg') }}" alt="Point Market Logo" class="logo">
+    <span class="fw-bold" >Point</span>
+    <span class="fw-bold" >Market</span>
+</a>
+
 
     <!-- Toggle Button untuk Mobile -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -131,53 +147,38 @@
     </button>
 
     <!-- Menu -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <!-- Menu Links -->
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('level_mahasiswa') ? 'active' : '' }}" href="/level_mahasiswa">
-            Level Mahasiswa
-          </a>
+          <a class="nav-link {{ request()->is('profile') ? 'active' : '' }}" href="/profile">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('mhs_misitambahan') ? 'active' : '' }}" href="/mhs_misitambahan">
-            Misi Tambahan
-          </a>
+          <a class="nav-link {{ request()->is('level_mahasiswa') ? 'active' : '' }}" href="/level_mahasiswa">Level Mahasiswa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('mhs_barangproject') ? 'active' : '' }}" href="/mhs_barangproject">
-            Reward
-          </a>
+          <a class="nav-link {{ request()->is('mhs_misitambahan') ? 'active' : '' }}" href="/mhs_misitambahan">Misi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('mhs_jenistransaksi') ? 'active' : '' }}" href="/mhs_jenistransaksi">
-            Jenis Transaksi
-          </a>
+          <a class="nav-link {{ request()->is('mhs_barangproject') ? 'active' : '' }}" href="/mhs_barangproject">Reward</a>
         </li>
-
-        <!-- Form Pencarian -->
-        <form class="d-flex ms-lg-3" action="{{ url('/search') }}" method="GET">
-          <div class="input-group">
-            <input
-              type="text"
-              class="form-control search-input"
-              placeholder="Cari NPM..."
-              name="npm"
-              value="{{ request('npm') }}">
-            <button class="btn btn-search" type="submit">Cari</button>
-          </div>
-        </form>
-
-        <!-- Logout -->
         <li class="nav-item">
-          <form action="{{ route('logout') }}" method="POST" class="d-inline">
-            @csrf
-            <button type="submit" class="btn btn-logout">
-              Logout
-            </button>
-          </form>
+          <a class="nav-link {{ request()->is('mhs_jenistransaksi') ? 'active' : '' }}" href="/mhs_jenistransaksi">Transaksi</a>
         </li>
       </ul>
+
+      <!-- Form Pencarian -->
+      <form class="d-flex ms-lg-3" action="{{ url('/search') }}" method="GET">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Cari NPM..." name="npm" value="{{ request('npm') }}">
+          <button class="btn btn-primary" type="submit">Cari</button>
+        </div>
+      </form>
+
+      <!-- Tombol Logout -->
+      <form action="{{ route('logout') }}" method="POST" class="ms-lg-3">
+        @csrf
+        <button type="submit" class="btn btn-logout">Logout</button>
+      </form>
     </div>
   </div>
 </nav>
@@ -186,15 +187,22 @@
 
 
 
+
+
+
 <!-- partial -->
 <div class="main-panel pl-5 mt-5">
-  <div class="row">
-    @if(session()->has('success'))
-    <div class="col-12 pl-5">
-      <div class="alert laert-success">{{ session('success') }}</div>
-          @endif
+   <!-- Success / Danger Messages -->
+   @if(session()->has('success'))
+            <div class="custom-alert alert alert-success">
+                {!! session('success') !!}
+            </div>
+        @endif
+        @if(session()->has('danger'))
+            <div class="custom-alert alert alert-danger">
+                {!! session('danger') !!}
+            </div>
+        @endif
           @yield('konten')
-        </div>
-      </div>
-    </div>
+      
   </div>

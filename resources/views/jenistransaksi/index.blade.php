@@ -108,26 +108,28 @@
             <table class="table">
                 <thead>
                     @if(session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+                    <div class="custom-alert alert alert-success alert-dismissible fade show custom-alert" role="alert">
                         {!! session('success') !!}
                     </div>
                     @endif
 
                     @if(session()->has('danger'))
-                    <div class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
+                    <div class="custom-alert alert alert-danger alert-dismissible fade show custom-alert" role="alert">
                         {!! session('danger') !!}
                     </div>
                     @endif
                     <tr>
-                        <th>Jenis Transaksi</th>
-                        <th>Deskripsi</th>
-                        <th>Point</th>
-                        <th>Action</th>
+                        <th style="width: 5%;">No</th>
+                        <th style="width: 10%;">Jenis Transaksi</th>
+                        <th style="width: 40%;">Deskripsi</th>
+                        <th style="width: 10%;">Point</th>
+                        <th style="width: 10%;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($jenistransaksis as $jenistransaksi)
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $jenistransaksi->nama_transaksi }}</td>
                         <td id="deskripsiCell{{ $jenistransaksi->id }}" class="deskripsi-cell">{{ $jenistransaksi->deskripsi }}</td>
                         <td><label class="badge badge-danger">{{ $jenistransaksi->point }}</label></td>

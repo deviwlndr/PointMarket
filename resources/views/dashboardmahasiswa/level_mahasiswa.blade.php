@@ -65,16 +65,16 @@
 <div class="card mr-5 ml-5">
     <div class="card-body">
         <h4 class="card-title custom-title">Level Mahasiswa</h4>
-        
+
         <!-- Success / Danger Messages -->
         @if(session()->has('success'))
-            <div class="alert alert-success">
-                {!! session('success') !!}
+            <div class="custom-alert alert alert-success">
+                {{ session('success') }}
             </div>
         @endif
         @if(session()->has('danger'))
-            <div class="alert alert-danger">
-                {!! session('danger') !!}
+            <div class="custom-alert alert alert-danger">
+                {{ session('danger') }}
             </div>
         @endif
 
@@ -82,26 +82,31 @@
         <div class="card-container">
             @foreach($mahasiswas as $mahasiswa)
             <div class="student-card">
-                <img src="{{ $mahasiswa->foto ?? 'https://via.placeholder.com/100' }}" alt="Foto Mahasiswa">
+                @if($mahasiswa->foto)
+                <img src="{{ $mahasiswa->foto }}" alt="Foto Mahasiswa" style="width: 100px; height: 100px; border-radius: 50%;">
+                @else
+                <i class="fas fa-user-circle" style="font-size: 100px; color: #ccc;"></i>
+                @endif
+
                 <h5>{{ $mahasiswa->nama_mahasiswa }}</h5>
                 <p>NPM: {{ $mahasiswa->npm }}</p>
                 <p>
-                    Poin: 
+                    Poin:
                     <span class="badge badge-danger">{{ $mahasiswa->jumlah_point }}</span>
                 </p>
                 <p>
-                    Level: 
+                    Level:
                     @if($mahasiswa->jumlah_point >= 10 && $mahasiswa->jumlah_point <= 50)
                         <span class="badge bg-secondary">Silver</span>
-                    @elseif($mahasiswa->jumlah_point > 50 && $mahasiswa->jumlah_point <= 100)
-                        <span class="badge bg-warning">Gold</span>
-                    @elseif($mahasiswa->jumlah_point > 100 && $mahasiswa->jumlah_point <= 150)
-                        <span class="badge bg-info">Platinum</span>
-                    @elseif($mahasiswa->jumlah_point > 150 && $mahasiswa->jumlah_point <= 200)
-                        <span class="badge bg-primary">Diamond</span>
-                    @else
-                        <span class="badge bg-secondary">Other Status</span>
-                    @endif
+                        @elseif($mahasiswa->jumlah_point > 50 && $mahasiswa->jumlah_point <= 100)
+                            <span class="badge bg-warning">Gold</span>
+                            @elseif($mahasiswa->jumlah_point > 100 && $mahasiswa->jumlah_point <= 150)
+                                <span class="badge bg-info">Platinum</span>
+                                @elseif($mahasiswa->jumlah_point > 150 && $mahasiswa->jumlah_point <= 10000)
+                                    <span class="badge bg-primary">Diamond</span>
+                                    @else
+                                    <span class="badge bg-secondary">Other Status</span>
+                                    @endif
                 </p>
             </div>
             @endforeach

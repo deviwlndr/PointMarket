@@ -38,8 +38,11 @@
                     <label for="kode_misi">Kode Misi</label>
                     <input type="text" name="kode_misi" class="form-control" id="kode_misi" placeholder="Enter Kode Misi" required>
                     <small id="kode_misiHelp" class="form-text text-muted">Kode misi will be used as the unique identifier for the mission.</small>
-                </div>                
-
+                </div> 
+                <div class="mb-3">
+                    <label for="dosen" class="form-label">Dosen</label>
+                    <input type="text" name="dosen" id="dosen" class="form-control" value="{{ auth()->user()->name }}" readonly>
+                </div>              
                 <!-- Nama Misi Input -->
                 <div class="form-group">
                     <label for="nama_misi">Nama Misi</label>

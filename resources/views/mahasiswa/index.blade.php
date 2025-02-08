@@ -87,12 +87,12 @@
         
         <!-- Success / Danger Messages -->
         @if(session()->has('success'))
-            <div class="alert alert-success">
+            <div class="custom-alert alert alert-success">
                 {!! session('success') !!}
             </div>
         @endif
         @if(session()->has('danger'))
-            <div class="alert alert-danger">
+            <div class="custom-alert alert alert-danger">
                 {!! session('danger') !!}
             </div>
         @endif
@@ -102,8 +102,8 @@
             <table class="table mt-3">
                 <thead>
                     <tr>
-                        <th>NPM</th>
-                        <th>Nama Mahasiswa</th>
+                        <th style="width: 10%;">NPM</th>
+                        <th style="width: 15%;">Nama Mahasiswa</th>
                         <th>Jumlah Point</th>
                         <th>Level</th>
                         <th>Action</th>
@@ -141,10 +141,7 @@
                                     @csrf
                                     <input type="submit" class="btn btn-delete" value="Delete">
                                 </form>
-
-                                <!-- Button Modal -->
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#riwayatPembelianModal{{ $mahasiswa->npm }}">Detail</button>
-                            </div>
+                          </div>
                         </td>
                     </tr>
                     @endforeach
@@ -154,63 +151,5 @@
     </div>
 </div>
 
-<!-- Modal -->
-@foreach($mahasiswas as $mahasiswa)
-    <div class="modal fade" id="riwayatPembelianModal{{ $mahasiswa->npm }}" tabindex="-1" role="dialog" aria-labelledby="riwayatPembelianModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="riwayatPembelianModalLabel">Riwayat Pembelian - {{ $mahasiswa->npm }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Riwayat Transaksi</h5>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID Jenis Transaksi</th>
-                                <th>Nama Transaksi</th>
-                                <th>Point</th>
-                                <th>Bukti</th>
-                                <th>Status</th>
-                                <th>Tanggal Pembelian</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($riwayat_pembelian_jeniss as $jenistransaksi)
-                                @if($jenistransaksi->npm == $mahasiswa->npm)
-                                    <tr>
-                                        <td>{{ $jenistransaksi->id_transaksi }}</td>
-                                        <td>{{ $jenistransaksi->transaksi }}</td>
-                                        <td><label class="badge badge-danger">{{ $jenistransaksi->point }}</label></td>
-                                        <td>
-                                            @if ($jenistransaksi->file_bukti)
-                                                <a href="{{ asset('storage/' . $jenistransaksi->file_bukti) }}" target="_blank">Lihat Bukti</a>
-                                            @else
-                                                Tidak ada bukti
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <span class="badge {{ $jenistransaksi->status === 'pending' ? 'bg-warning' : 'bg-success' }}">
-                                                {{ ucfirst($jenistransaksi->status) }}
-                                            </span>
-                                        </td>
-                                        
-                                        <td>{{ $jenistransaksi->tanggal_transaksi }}</td>
-                                    </tr>
-                                @endif
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                </div>
-            </div>
-        </div>
-    </div>
-@endforeach
+
 @endsection

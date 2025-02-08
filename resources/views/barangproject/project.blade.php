@@ -107,31 +107,33 @@
         <div class="table-responsive">
             <table class="table">
                 <thead>
-                    @if(session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
-                        {!! session('success') !!}
+                @if(session()->has('success'))
+                    <div class="custom-alert alert alert-success">
+                        {{ session('success') }}
                     </div>
-                    @endif
-
-                    @if(session()->has('danger'))
-                    <div class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
-                        {!! session('danger') !!}
+                @endif
+                @if(session()->has('danger'))
+                    <div class="custom-alert alert alert-danger">
+                        {{ session('danger') }}
                     </div>
-                    @endif
+                @endif
 
                     <tr>
-
-                        <th>Kode Barang</th>
-                        <th>Nama Barang</th>
-                        <th>Deskripsi</th>
-                        <th>Point</th>
-                        <th>Action</th>
+                        <th style="width: 10%;">No</th>
+                        <th style="width: 20%;">Kode Barang</th>
+                        <th style="width: 20%;">Dosen</th>
+                        <th style="width: 20%;">Nama Barang</th>
+                        <th style="width: 40%;">Deskripsi</th>
+                        <th style="width: 10%;">Point</th>
+                        <th style="width: 10%;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($barangproject as $p)
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $p->kode_barang}}</td>
+                        <td>{{ $p->dosen}}</td>
                         <td>{{$p->nama_barang}}</td>
                         <td id="deskripsiCell{{ $p->id }}" class="deskripsi-cell">{{ $p->deskripsi }}</td>
                         <td><label class="badge badge-danger">{{$p->harga_point}}</label></td>

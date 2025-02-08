@@ -10,5 +10,9 @@ class Login extends Model
     protected $table = 'users';
     use HasFactory;
     protected $guarded = ['id'];
-   
+    public function riwayatMisi()
+    {
+        return $this->hasMany(RiwayatMisi::class, 'npm', 'npm');
+    }
+    
 }

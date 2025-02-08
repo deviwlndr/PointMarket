@@ -107,29 +107,33 @@
       <table class="table">
         <thead>
           @if(session()->has('success'))
-          <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+          <div class="custom-alert alert alert-success alert-dismissible fade show custom-alert" role="alert">
             {!! session('success') !!}
           </div>
           @endif
 
           @if(session()->has('danger'))
-          <div class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
+          <div class="custom-alert alert alert-danger alert-dismissible fade show custom-alert" role="alert">
             {!! session('danger') !!}
           </div>
           @endif
 
           <tr>
-            <th class="text-center">Kode Misi</th>
-            <th class="text-center">Nama Misi</th>
-            <th class="text-center">Deskripsi</th>
-            <th class="text-center">Point</th>
-            <th class="text-center">Action</th>
+            <th style="width: 10%;" class="text-center">No</th>
+            <th style="width: 15%;" class="text-center">Kode Misi</th>
+            <th style="width: 10%;"  class="text-center">Dosen</th>
+            <th style="width: 15%;" class="text-center">Nama Misi</th>
+            <th style="width: 30%;" class="text-center">Deskripsi</th>
+            <th style="width: 10%;" class="text-center">Point</th>
+            <th style="width: 10%;" class="text-center">Action</th>
           </tr>
         </thead>
         <tbody>
           @foreach($misitambahans as $misitambahan)
           <tr>
+            <td>{{ $loop->iteration }}</td>
             <td>{{ $misitambahan->kode_misi }}</td>
+            <td>{{ $misitambahan->dosen}}</td>
             <td>{{ $misitambahan->nama_misi }}</td>
             <td>{{ $misitambahan->deskripsi }}</td>
             <td><label class="badge badge-danger">{{ $misitambahan->harga_point }}</label></td>

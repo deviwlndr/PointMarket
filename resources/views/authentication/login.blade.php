@@ -86,48 +86,70 @@
   <div class="auth-form-light text-left py-5 px-4 px-sm-5">
     <form action="/login" method="post" class="pt-3">
       @if(session()->has('success'))
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <div class="custom-alert alert alert-success alert-dismissible fade show" role="alert">
         {{ session('success')}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       @endif
 
       @if(session()->has('loginError'))
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <div class="custom-alert alert alert-danger alert-dismissible fade show" role="alert">
         {{ session('loginError')}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       @endif
       <div class="brand-logo">
-        <img src="" alt="">
-        <h2>Point Market</h2>
-      </div>
-      <h5>Hello! let's get started</h5>
-      <h6 class="font-weight-light">Login to continue.</h6>
-      @csrf
-      <div class="form-group">
-        <input type="npm" name="npm" class="form-control form-control-lg @error('npm') is-invalid @enderror" id="npm" placeholder="NPM" autofocus required>
-        @error('npm')
-        <div class="invalid-feedback">
-          {{ $message }}
-        </div>
-        @enderror
-      </div>
-      <div class="form-group">
-        <input type="password" name="password" class="form-control form-control-lg @error('password') is-invalid @enderror" id="password" placeholder="Password" autofocus required>
-        @error('password')
-        <div class="invalid-feedback">
-          {{ $message }}
-        </div>
-        @enderror
-      </div>
+    <h2>Point Market</h2>
+</div>
+<h5>Hello! Let's get started</h5>
+<h6 class="font-weight-light">Login to continue.</h6>
+@csrf
+<div class="form-group">
+    <label for="role">Role</label>
+    <select name="role" id="role" class="form-control" onchange="toggleInputFields()">
+        <option value="student">Student</option>
+        <option value="admin">Admin</option>
+        <option value="dosen">Dosen</option>
+    </select>
+</div>
 
-      <div class="mt-3">
-        <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">LOGIN</button>
-      </div>
-      <div class="text-center mt-4 font-weight-light">
-        Don't have an account? <a href="/register" class="text-primary">Create</a>
-      </div>
+<div id="npm-field" class="form-group">
+    <label for="npm">NPM</label>
+    <input type="text" name="npm" id="npm" class="form-control @error('npm') is-invalid @enderror" placeholder="Enter your NPM" maxlength="9">
+    @error('npm')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+    @enderror
+</div>
+
+<div id="email-field" class="form-group" style="display: none;">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter your email">
+    @error('email')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+    @enderror
+</div>
+
+<div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required>
+    @error('password')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+    @enderror
+</div>
+
+<div class="mt-3">
+    <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">LOGIN</button>
+</div>
+<div class="text-center mt-4 font-weight-light">
+    Don't have an account? <a href="/register" class="text-primary">Create</a>
+</div>
+
     </form>
   </div>
 </div>

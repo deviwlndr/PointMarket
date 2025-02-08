@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -21,12 +22,18 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    /**protected $fillable = [
+
+     use HasFactory;
+
+    
+    protected $fillable = [
         'name',
         'npm',
         'email',
         'password',
-    ];**/
+        'foto_profil',
+        'role',
+    ];
 
     protected $guarded = ['id'];
 
@@ -50,5 +57,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    
+    public function riwayatMisi()
+    {
+        return $this->hasMany(RiwayatMisi::class, 'npm', 'npm');
+    }
+
 }

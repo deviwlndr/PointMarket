@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JenisTransaksi;
+use App\Models\MHS_MisiTambahan;
+use App\Models\MisiTambahan;
 use App\Models\RiwayatPembelianJenisTransaksi;
+use Illuminate\Support\Facades\Auth;
 
 class MHS_JenisTransaksiController extends Controller
 {
@@ -22,36 +25,76 @@ class MHS_JenisTransaksiController extends Controller
         return view('riwayat_pembelian_jenis_transaksi.index_mahasiswa', compact('riwayat_pembelian_jeniss', 'rekap_pembelian'));
     }
 
-    public function create()
-    {
-        return view('riwayat_pembelian_jenis_transaksi.create');
+    public function create(Request $request)
+{
+    $request->validate([
+        'id_transaksi' => 'required|string',
+        'id_misi' => 'required|integer',
+        'tanggal_transaksi' => 'required|date',
+        'file_bukti' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:2048',
+        'id_jenis_transaksi' => 'required|integer',
+    ]);
+
+    $misi = MisiTambahan::find($request->id_misi); // Cari misi berdasarkan ID
+
+    if (!$misi) {
+        return redirect()->back()->withErrors(['Misi tidak ditemukan.']);
     }
+
+    $data = [
+        'id_transaksi' => $request->id_transaksi,
+        'npm' => Auth::user()->npm ?? 'N/A', // Ambil npm pengguna yang login
+        'nama_misi' => $misi->nama_misi,
+        'point' => $misi->harga_point,
+        'tanggal_transaksi' => $request->tanggal_transaksi,
+        'id_jenis_transaksi' => $request->id_jenis_transaksi,
+        'status' => 'pending', // Set status awal
+    ];
+
+    if ($request->hasFile('file_bukti')) {
+        $data['file_bukti'] = $request->file('file_bukti')->store('bukti_transaksi', 'public');
+    }
+
+    RiwayatPembelianJenisTransaksi::create($data);
+
+    return redirect('/riwayat_pembelian_jenis_transaksi/create')->with('success', 'Misi berhasil diajukan dan menunggu validasi admin.');
+}
+
 
     public function store(Request $request)
     {
-        RiwayatPembelianJenisTransaksi::create([
-            'id_transaksi' => $request->input('id_transaksi'),
-            'npm' => $request->npm,
-            'transaksi' => $request->transaksi,
-            'point' => $request->point,
-            'tanggal_transaksi' => $request->tanggal_transaksi,
+        $request->validate([
+            'id_transaksi' => 'required|string',
+            'id_misi' => 'required|integer',
+            'tanggal_transaksi' => 'required|date',
             'file_bukti' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:2048',
-            'id_jenis_transaksi' => $request->input('id_jenis_transaksi'),
+            'id_jenis_transaksi' => 'required|integer',
         ]);
 
-        // Proses data
-        $data = $request->all();
-        $data['status'] = 'pending'; // Set status awal
+        $misi = MisiTambahan::find($request->id_misi); // Cari misi berdasarkan ID
+
+        if (!$misi) {
+            return redirect()->back()->withErrors(['Misi tidak ditemukan.']);
+        }
+
+        $data = [
+            'id_transaksi' => $request->id_transaksi,
+            'npm' => Auth::user()->npm ?? 'N/A', // Ambil npm pengguna yang login
+            'nama_misi' => $misi->nama_misi,
+            'point' => $misi->harga_point,
+            'tanggal_transaksi' => $request->tanggal_transaksi,
+            'id_jenis_transaksi' => $request->id_jenis_transaksi,
+            'status' => 'pending', // Set status awal
+        ];
 
         if ($request->hasFile('file_bukti')) {
-            $path = $request->file('file_bukti')->store('bukti_misi', 'public'); // Path otomatis dibuat
-            $data['file_bukti'] = $path; // Simpan path ke dalam array data
+            $data['file_bukti'] = $request->file('file_bukti')->store('bukti_transaksi', 'public');
         }
-        
 
         RiwayatPembelianJenisTransaksi::create($data);
-        
+
         return redirect('/level_mahasiswa')->with('success', 'Misi berhasil diajukan dan menunggu validasi admin.');
+    
     }
 
     public function validasiMisi($id)
@@ -65,6 +108,5 @@ class MHS_JenisTransaksiController extends Controller
 
     return redirect()->back()->with('success', 'Misi berhasil divalidasi.');
     }
-
 
 }

@@ -1,0 +1,1069 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Point Market API",
+        "description": "Dokumentasi API untuk seluruh fitur aplikasi Point Market",
+        "contact": {
+            "email": "admin@pointmarket.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/barangproject": {
+            "get": {
+                "tags": [
+                    "Barang Project"
+                ],
+                "summary": "Get all Barang Projects",
+                "description": "Retrieve a list of all Barang Projects",
+                "operationId": "getAllBarangProjects",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/barangproject/{id}": {
+            "get": {
+                "tags": [
+                    "Barang Project"
+                ],
+                "summary": "Show a Barang Project",
+                "description": "Retrieve details of a specific Barang Project",
+                "operationId": "showBarangProject",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Barang Project",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "kode_barang": {
+                                            "type": "string",
+                                            "example": "BRG001"
+                                        },
+                                        "nama_barang": {
+                                            "type": "string",
+                                            "example": "Laptop"
+                                        },
+                                        "deskripsi": {
+                                            "type": "string",
+                                            "example": "Deskripsi Barang"
+                                        },
+                                        "harga_point": {
+                                            "type": "integer",
+                                            "example": 1000
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Barang Project not found"
+                    }
+                }
+            }
+        },
+        "/barangproject": {
+            "post": {
+                "tags": [
+                    "Barang Project"
+                ],
+                "summary": "Store a new Barang Project",
+                "description": "Store a new Barang Project to the database",
+                "operationId": "storeBarangProject",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "kode_barang": {
+                                        "type": "string",
+                                        "example": "BRG001"
+                                    },
+                                    "nama_barang": {
+                                        "type": "string",
+                                        "example": "Laptop"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "example": "Deskripsi Barang"
+                                    },
+                                    "harga_point": {
+                                        "type": "integer",
+                                        "example": 1000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Barang Project created successfully"
+                    }
+                }
+            }
+        },
+        "/barangproject/{id}": {
+            "put": {
+                "tags": [
+                    "Barang Project"
+                ],
+                "summary": "Update an existing Barang Project",
+                "description": "Update the details of a Barang Project",
+                "operationId": "updateBarangProject",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Barang Project",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "kode_barang": {
+                                        "type": "string",
+                                        "example": "BRG002"
+                                    },
+                                    "nama_barang": {
+                                        "type": "string",
+                                        "example": "Monitor"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "example": "Deskripsi Barang Update"
+                                    },
+                                    "harga_point": {
+                                        "type": "integer",
+                                        "example": 2000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Barang Project updated successfully"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Barang Project"
+                ],
+                "summary": "Delete a Barang Project",
+                "description": "Delete a Barang Project by ID",
+                "operationId": "deleteBarangProject",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Barang Project",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Barang Project deleted successfully"
+                    }
+                }
+            }
+        },
+        "/api/jenistransaksi": {
+            "get": {
+                "tags": [
+                    "Jenis Transaksi"
+                ],
+                "summary": "Get all Jenis Transaksi",
+                "description": "Retrieve a list of all Jenis Transaksi",
+                "operationId": "getAllJenisTransaksi",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "nama_transaksi": {
+                                                "type": "string",
+                                                "example": "Pembayaran"
+                                            },
+                                            "deskripsi": {
+                                                "type": "string",
+                                                "example": "Transaksi pembayaran barang"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Jenis Transaksi"
+                ],
+                "summary": "Store a new Jenis Transaksi",
+                "description": "Store a new Jenis Transaksi to the database",
+                "operationId": "storeJenisTransaksi",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "kode_transaksi": {
+                                        "type": "string",
+                                        "example": "TRX001"
+                                    },
+                                    "nama_transaksi": {
+                                        "type": "string",
+                                        "example": "Pembayaran"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "example": "Deskripsi Transaksi"
+                                    },
+                                    "point": {
+                                        "type": "integer",
+                                        "example": 100
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Jenis Transaksi created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "kode_transaksi": {
+                                            "type": "string",
+                                            "example": "TRX001"
+                                        },
+                                        "nama_transaksi": {
+                                            "type": "string",
+                                            "example": "Pembayaran"
+                                        },
+                                        "deskripsi": {
+                                            "type": "string",
+                                            "example": "Deskripsi Transaksi"
+                                        },
+                                        "point": {
+                                            "type": "integer",
+                                            "example": 100
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/jenistransaksi/{id}": {
+            "put": {
+                "tags": [
+                    "Jenis Transaksi"
+                ],
+                "summary": "Update an existing Jenis Transaksi",
+                "description": "Update the details of a Jenis Transaksi",
+                "operationId": "updateJenisTransaksi",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Jenis Transaksi",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nama_transaksi": {
+                                        "type": "string",
+                                        "example": "Pembayaran"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "example": "Deskripsi Transaksi Diperbarui"
+                                    },
+                                    "point": {
+                                        "type": "integer",
+                                        "example": 150
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Jenis Transaksi updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "nama_transaksi": {
+                                            "type": "string",
+                                            "example": "Pembayaran"
+                                        },
+                                        "deskripsi": {
+                                            "type": "string",
+                                            "example": "Deskripsi Transaksi Diperbarui"
+                                        },
+                                        "point": {
+                                            "type": "integer",
+                                            "example": 150
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Jenis Transaksi not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Jenis Transaksi"
+                ],
+                "summary": "Delete a Jenis Transaksi",
+                "description": "Delete a specific Jenis Transaksi by ID",
+                "operationId": "deleteJenisTransaksi",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Jenis Transaksi",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Jenis Transaksi deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data Jenis Transaksi Berhasil Dihapus."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Jenis Transaksi not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Jenis Transaksi not found."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/mahasiswa": {
+            "get": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Get list of mahasiswa",
+                "description": "Returns list of mahasiswa",
+                "operationId": "getAllMahasiswa",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Mahasiswa"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Store new mahasiswa",
+                "description": "Returns mahasiswa data",
+                "operationId": "storeMahasiswa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Mahasiswa"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Mahasiswa"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/mahasiswa/{id}": {
+            "get": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Get mahasiswa information",
+                "description": "Returns mahasiswa data",
+                "operationId": "getMahasiswaById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Mahasiswa ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Mahasiswa"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Mahasiswa not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Update existing mahasiswa",
+                "description": "Returns updated mahasiswa data",
+                "operationId": "updateMahasiswa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Mahasiswa ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Mahasiswa"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Mahasiswa"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Mahasiswa not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Delete existing mahasiswa",
+                "description": "Deletes a mahasiswa",
+                "operationId": "deleteMahasiswa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Mahasiswa ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Mahasiswa not found"
+                    }
+                }
+            }
+        },
+        "/api/misitambahan": {
+            "get": {
+                "tags": [
+                    "Misi Tambahan"
+                ],
+                "summary": "Get list of misitambahan",
+                "description": "Returns list of misitambahan",
+                "operationId": "getAllMisiTambahan",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/MisiTambahan"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Misi Tambahan"
+                ],
+                "summary": "Create a new Misi Tambahan",
+                "operationId": "15e6f494440d43a4bb3a1589fbe77764",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "kode_misi": {
+                                        "type": "string",
+                                        "example": "M001"
+                                    },
+                                    "nama_misi": {
+                                        "type": "string",
+                                        "example": "Ikuti Workshop"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "example": "Meningkatkan skill mahasiswa"
+                                    },
+                                    "harga_point": {
+                                        "type": "integer",
+                                        "example": 50
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Misi created"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/misitambahan/{id}": {
+            "get": {
+                "tags": [
+                    "Misi Tambahan"
+                ],
+                "summary": "Get Misi Tambahan by ID",
+                "operationId": "7dc21b8ba721dbe2302826e1b99cc0f5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Misi Tambahan",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Misi Tambahan"
+                ],
+                "summary": "Update Misi Tambahan",
+                "operationId": "d65fdc788f06e75caf80b8e2dedaf998",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Misi Tambahan",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "kode_misi": {
+                                        "type": "string",
+                                        "example": "M001"
+                                    },
+                                    "nama_misi": {
+                                        "type": "string",
+                                        "example": "Ikuti Workshop"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "example": "Meningkatkan skill mahasiswa"
+                                    },
+                                    "harga_point": {
+                                        "type": "integer",
+                                        "example": 50
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Misi updated"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Misi Tambahan"
+                ],
+                "summary": "Delete Misi Tambahan",
+                "operationId": "14c45d318870b38463504b28e134fe4e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Misi Tambahan",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Misi deleted"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/riwayat_misi": {
+            "get": {
+                "tags": [
+                    "Riwayat Misi"
+                ],
+                "summary": "Get all Riwayat Misi",
+                "description": "Retrieve a list of all Riwayat Misi",
+                "operationId": "getAllRiwayatMisi",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id_misi": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "npm": {
+                                                "type": "string",
+                                                "example": "12345678"
+                                            },
+                                            "nama_misi": {
+                                                "type": "string",
+                                                "example": "Seminar AI"
+                                            },
+                                            "deskripsi": {
+                                                "type": "string",
+                                                "example": "Mengikuti seminar tentang AI"
+                                            },
+                                            "point": {
+                                                "type": "integer",
+                                                "example": 100
+                                            },
+                                            "tanggal_transaksi": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2025-01-22"
+                                            },
+                                            "file_bukti": {
+                                                "type": "string",
+                                                "example": "bukti_seminar.pdf"
+                                            },
+                                            "status": {
+                                                "type": "string",
+                                                "example": "pending"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Riwayat Misi"
+                ],
+                "summary": "Create a new Riwayat Misi",
+                "description": "Store a new Riwayat Misi to the database",
+                "operationId": "createRiwayatMisi",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "npm": {
+                                        "type": "string",
+                                        "example": "12345678"
+                                    },
+                                    "nama_misi": {
+                                        "type": "string",
+                                        "example": "Seminar AI"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "example": "Mengikuti seminar tentang AI"
+                                    },
+                                    "point": {
+                                        "type": "integer",
+                                        "example": 100
+                                    },
+                                    "file_bukti": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "example": "file.pdf"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Riwayat Misi created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Misi berhasil diajukan!"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id_misi": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "npm": {
+                                                    "type": "string",
+                                                    "example": "12345678"
+                                                },
+                                                "nama_misi": {
+                                                    "type": "string",
+                                                    "example": "Seminar AI"
+                                                },
+                                                "deskripsi": {
+                                                    "type": "string",
+                                                    "example": "Mengikuti seminar tentang AI"
+                                                },
+                                                "point": {
+                                                    "type": "integer",
+                                                    "example": 100
+                                                },
+                                                "tanggal_transaksi": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2025-01-22"
+                                                },
+                                                "file_bukti": {
+                                                    "type": "string",
+                                                    "example": "uploads/file.pdf"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "example": "pending"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation failed."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Mahasiswa": {
+                "title": "Mahasiswa",
+                "description": "Mahasiswa model",
+                "required": [
+                    "npm",
+                    "nama_mahasiswa",
+                    "jumlah_point"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "npm": {
+                        "type": "string",
+                        "example": "714220054"
+                    },
+                    "nama_mahasiswa": {
+                        "type": "string",
+                        "example": "Devi Wulandari"
+                    },
+                    "jumlah_point": {
+                        "type": "integer",
+                        "example": 820
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-13T12:34:56Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-13T12:34:56Z"
+                    }
+                },
+                "type": "object"
+            },
+            "MisiTambahan": {
+                "title": "MisiTambahan",
+                "description": "MisiTambahan model",
+                "required": [
+                    "kode_misi",
+                    "nama_misi",
+                    "deskripsi",
+                    "harga_point"
+                ],
+                "properties": {
+                    "id_misi": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "kode_misi": {
+                        "type": "string",
+                        "example": "MS001"
+                    },
+                    "nama_misi": {
+                        "type": "string",
+                        "example": "Misi A"
+                    },
+                    "deskripsi": {
+                        "type": "string",
+                        "example": "Deskripsi Misi A"
+                    },
+                    "harga_point": {
+                        "type": "integer",
+                        "example": 100
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-13T12:34:56Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-13T12:34:56Z"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Barang Project",
+            "description": "Barang Project"
+        },
+        {
+            "name": "Jenis Transaksi",
+            "description": "Jenis Transaksi"
+        },
+        {
+            "name": "Mahasiswa",
+            "description": "Mahasiswa"
+        },
+        {
+            "name": "Misi Tambahan",
+            "description": "Misi Tambahan"
+        },
+        {
+            "name": "Riwayat Misi",
+            "description": "Riwayat Misi"
+        }
+    ]
+}

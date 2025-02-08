@@ -22,6 +22,8 @@
   <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+
+  <script src="{{ asset('js/auth.js') }}"></script>
 </head>
 <body>
  <html> 
@@ -29,7 +31,7 @@
       
           @if(session()->has('success'))
           <div class="col-12"> 
-            <div class="alert laert-success">{{ session('success') }}</div>
+            <div class="custom-alert alert laert-success">{{ session('success') }}</div>
            @endif 
           @yield('konten')
           

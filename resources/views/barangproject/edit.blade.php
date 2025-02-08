@@ -30,12 +30,16 @@
         <div class="card-body">
         <h4 class="card-title custom-title">Edit Reward</h4>
            
-            <form action="/barangproject/{{$barangproject->id_barang}}" method="POST">
+            <form action="{{ route('barangproject.update', $barangproject->id_barang) }}" method="POST">
                 @method('put')
                 @csrf
                 <div class="mb-3">
                         <label for="disabledTextInput" class="form-label">Kode Barang</label>
                         <input type="text" name="kode_barang" id="disabledTextInput" class="form-control" placeholder="" value="{{$barangproject->kode_barang}}">
+                </div>
+                <div class="mb-3">
+                        <label for="disabledTextInput" class="form-label">Dosen</label>
+                        <input type="text" name="dosen" id="disabledTextInput" class="form-control" placeholder="" value="{{$barangproject->dosen}}" readonly>
                 </div>
                 <div class="mb-3">
                         <label for="disabledTextInput" class="form-label">Nama Barang</label>

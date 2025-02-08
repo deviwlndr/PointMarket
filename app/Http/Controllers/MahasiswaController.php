@@ -3,26 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
-use App\Models\MHS_MisiTambahan;
-use App\Models\RiwayatPembelian;
-use App\Models\RiwayatPembelianBarang;
 use App\Models\RiwayatPembelianJenisTransaksi;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
+
     public function index()
     {
         $mahasiswas = Mahasiswa::all();
-        $riwayat_pembelian_jeniss = RiwayatPembelianJenisTransaksi::all();
-        $riwayat_pembelians = RiwayatPembelianJenisTransaksi::all();
-        $riwayat_pembelian_barangs= RiwayatPembelianJenisTransaksi::all();
-        $rekap_pembelian = $riwayat_pembelian_jeniss->groupBy('npm');
-       
-        
-        return view('mahasiswa.index', compact('mahasiswas', 'riwayat_pembelian_jeniss', 'rekap_pembelian','riwayat_pembelians', 'riwayat_pembelian_barangs'));
+
+
+
+        return view('mahasiswa.index', compact('mahasiswas'));
     }
-    
+
 
     public function create()
     {
@@ -31,37 +26,60 @@ class MahasiswaController extends Controller
 
     public function store(Request $request)
     {
-       Mahasiswa::create([
-        'npm'=> $request->npm,
-        'nama_mahasiswa'=> $request->nama_mahasiswa,
-        'jumlah_point'=> $request->jumlah_point,
-       ]);
-       return redirect('/mahasiswa')->with('success', 'Data Level Mahasiswa Berhasil Ditambahkan.');
+        // Validasi input
+        $request->validate([
+            'npm' => 'required|string|max:15|unique:mahasiswas,npm',
+            'nama_mahasiswa' => 'required|string|max:255',
+            'jumlah_point' => 'required|integer|min:0',
+        ]);
+
+        // Simpan data ke database
+        Mahasiswa::create([
+            'npm' => $request->npm,
+            'nama_mahasiswa' => $request->nama_mahasiswa,
+            'jumlah_point' => $request->jumlah_point,
+        ]);
+
+        // Redirect dengan pesan sukses
+        return redirect('/mahasiswa')->with('success', 'Data Level Mahasiswa Berhasil Ditambahkan.');
     }
 
+
     public function edit($id)
-    {    
-       $mahasiswa = Mahasiswa::find($id);
+    {
+        $mahasiswa = Mahasiswa::find($id);
         return view('/mahasiswa.edit', compact(['mahasiswa']));
     }
 
     public function update(Request $request, $id)
     {
-       $mahasiswa = Mahasiswa::find($id);
-       $mahasiswa-> update ([
-            'npm'=> $request->npm,
-            'nama_mahasiswa'=> $request->nama_mahasiswa,
-            'jumlah_point'=> $request->jumlah_point,
-           ]);
-           return redirect('/mahasiswa')->with('success', 'Data Level Mahasiswa Berhasil Diubah.');
+        // Validasi input
+        $request->validate([
+            'npm' => 'required|string|max:15|unique:mahasiswa,npm,' . $id, // Sesuaikan dengan ID mahasiswa yang sedang diupdate
+            'nama_mahasiswa' => 'required|string|max:255',
+            'jumlah_point' => 'required|integer|min:0',
+        ]);
+        
+
+        // Cari data berdasarkan ID
+        $mahasiswa = Mahasiswa::find($id);
+
+        // Update data
+        $mahasiswa->update([
+            'npm' => $request->npm,
+            'nama_mahasiswa' => $request->nama_mahasiswa,
+            'jumlah_point' => $request->jumlah_point,
+        ]);
+
+        // Redirect dengan pesan sukses
+        return redirect('/mahasiswa')->with('success', 'Data Level Mahasiswa Berhasil Diubah.');
     }
+
 
     public function destroy($id)
     {
         $mahasiswa = Mahasiswa::find($id);
-        $mahasiswa->delete();   
+        $mahasiswa->delete();
         return redirect('/mahasiswa')->with('success', 'Data Level Mahasiswa Berhasil Dihapus.');
-    
     }
-
 }

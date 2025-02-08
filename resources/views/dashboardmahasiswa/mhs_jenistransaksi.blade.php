@@ -6,13 +6,13 @@
         <h4 class="mb-4">Jenis Transaksi</h4>
         
         @if(session()->has('success'))
-            <div class="alert alert-success">
-                {!! session('success') !!}
+            <div class="custom-alert alert alert-success">
+                {{ session('success') }}
             </div>
         @endif
         @if(session()->has('danger'))
-            <div class="alert alert-danger">
-                {!! session('danger') !!}
+            <div class="custom-alert alert alert-danger">
+                {{ session('danger') }}
             </div>
         @endif
 
