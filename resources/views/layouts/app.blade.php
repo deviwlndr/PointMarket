@@ -1,82 +1,132 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="{{ asset('js/auth.js') }}"></script>
-    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <title>Point Market</title>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap & Custom Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fde2e4;
+        }
+        .navbar {
+            background-color: #ffccd5 !important;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: #6a0572 !important;
+        }
+        .navbar-nav .nav-link {
+            color: #6a0572 !important;
+            font-weight: 500;
+        }
+        .navbar-toggler-icon {
+            filter: invert(20%);
+        }
+        .dropdown-menu {
+            background-color: #fff0f3;
+        }
+        .dropdown-item:hover {
+            background-color: #ffccd5;
+        }
+    </style>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-
-</head>
-<body>
+    <style>
+    .navbar {
+        background-color: #ffccd5 !important;
+        padding: 15px 0; /* Menambah tinggi navbar */
+    }
+    .navbar-brand {
+        font-weight: bold;
+        font-size: 1.8rem; /* Memperbesar font brand */
+        color: #6a0572 !important;
+    }
+    .navbar-nav .nav-link {
+        color: #6a0572 !important;
+        font-weight: 600;
+        font-size: 1.2rem; /* Memperbesar font menu */
+        padding: 10px 15px;
+    }
+    .navbar-toggler-icon {
+        filter: invert(20%);
+    }
+    .dropdown-menu {
+        background-color: #fff0f3;
+    }
+    .dropdown-item {
+        font-size: 1.1rem; /* Memperbesar font dropdown */
+    }
+    .dropdown-item:hover {
+        background-color: #ffccd5;
+    }
+</style>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<nav class="navbar navbar-expand-md navbar-light shadow-sm">
+    <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+    <img src="{{ asset('images/favicon.png') }}" alt="Logo" style=" height: 50px; width: auto; margin-right: 10px;border-radius: 50%; object-fit: cover;">
+    <span style="font-weight: bold; font-size: 1.8rem; color: #6a0572;">Point Market</span>
+</a>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav me-auto"></ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ms-auto">
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                    @endif
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
+            </ul>
+        </div>
+    </div>
+</nav>
 
         <main class="py-4">
             @yield('content')
         </main>
     </div>
-</body>
-</html>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+

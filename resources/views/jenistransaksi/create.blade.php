@@ -40,14 +40,14 @@
 <div class="container pr-5 pl-5">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title custom-title">Add Jenis Transaksi</h4>
+            <h4 class="card-title custom-title">Add Rules</h4>
             <p class="card-description">Fill out the form below to add a new "Jenis Transaksi".</p>
 
             <form action="{{ url('/jenistransaksi') }}" method="POST">
                 @csrf
 
                 <div class="form-group">
-                    <label for="examplenama_transaksi">Nama Transaksi</label>
+                    <label for="examplenama_transaksi">Nama Rules</label>
                     <input type="text" name="nama_transaksi" class="form-control" id="examplenama_transaksi" aria-describedby="nama_transaksi" placeholder="Nama Transaksi">
                 </div>
                 <div class="form-group">

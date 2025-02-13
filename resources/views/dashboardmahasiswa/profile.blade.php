@@ -154,7 +154,9 @@
                                     <span class="text-danger">Tidak Ada</span>
                                     @endif
                                 </td>
-                                <td><span class="badge bg-success">{{ ucfirst($transaksi->status) }}</span></td>
+                                <td><span class="badge bg-{{ $transaksi->status === 'pending' ? 'warning' : 'success' }}">
+                                    {{ ucfirst($transaksi->status) }}
+                                </span></td>
                             </tr>
                             @empty
                             <tr>

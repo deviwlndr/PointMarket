@@ -59,6 +59,52 @@
         padding: 5px 10px;
         border-radius: 5px;
     }
+
+    /* Styling untuk navbar dan form pencarian */
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #5d6de8;
+        margin-left: 15px;
+        text-transform: capitalize;
+        transition: color 0.3s ease-in-out, transform 0.3s ease;
+    }
+
+    .navbar-nav .nav-link.active {
+        color: #dc5f7e;
+        font-weight: 700;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+        max-width: 300px;
+    }
+
+    .input-group .form-control {
+        border-radius: 20px 0 0 20px;
+        border-color: #5d6de8;
+        font-size: 0.9rem;
+    }
+
+    .input-group .form-control:focus {
+        border-color: #dc5f7e;
+        box-shadow: 0 0 5px rgba(220, 95, 126, 0.5);
+    }
+
+    .input-group .btn-primary {
+        background-color: #5d6de8;
+        border: none;
+        border-radius: 0 20px 20px 0;
+        color: white;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .input-group .btn-primary:hover {
+        background-color: #dc5f7e;
+        transform: scale(1.05);
+    }
 </style>
 
 <!-- Main Card -->

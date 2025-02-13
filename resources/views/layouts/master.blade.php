@@ -210,7 +210,7 @@
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"><a class="nav-link text-secondary" href="/misitambahan">Misi Tambahan</a></li>
             <li class="nav-item"><a class="nav-link text-secondary" href="/barangproject">Barang Project</a></li>
-            <li class="nav-item"><a class="nav-link text-secondary" href="/jenistransaksi">Jenis Transaksi</a></li>
+            <li class="nav-item"><a class="nav-link text-secondary" href="/jenistransaksi">Rules</a></li>
           </ul>
         </div>
       </li>

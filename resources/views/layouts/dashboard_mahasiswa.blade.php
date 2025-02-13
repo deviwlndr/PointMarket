@@ -30,12 +30,26 @@
 <script src="{{ asset('js/confirm.js') }}"></script>
 <style>
 /* Navbar Styling */
+/* Navbar Styling */
 .custom-navbar {
-    background-color: #f8f9fa; /* Latar belakang putih lembut */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 0.8rem 1.5rem;
     font-family: 'Poppins', sans-serif;
+    padding-right: 30px; /* Menambah ruang di kanan navbar */
 }
+
+/* Tombol Login Styling */
+.ms-lg-3 {
+    margin-right: 50px; /* Menambahkan jarak kiri pada tombol Login */
+}
+
+/* Form Pencarian */
+.input-group {
+    max-width: 300px;
+    margin-right: 10px; /* Menambahkan ruang ke kanan agar tidak terlalu rapat */
+}
+
 
 /* Logo Styling */
 .navbar-brand {
@@ -81,11 +95,6 @@
 .navbar-nav .nav-link.active {
     color: #dc5f7e; /* Warna merah muda untuk menu aktif */
     font-weight: 700;
-}
-
-/* Pencarian Styling */
-.input-group {
-    max-width: 300px;
 }
 
 .input-group .form-control {
@@ -135,11 +144,10 @@
   <div class="container-fluid d-flex align-items-center justify-content-between">
     <!-- Logo -->
     <a class="navbar-brand d-flex align-items-center" href="/profile">
-    <img src="{{ asset('images/logo.svg') }}" alt="Point Market Logo" class="logo">
-    <span class="fw-bold" >Point</span>
-    <span class="fw-bold" >Market</span>
-</a>
-
+      <img src="{{ asset('images/logo.svg') }}" alt="Point Market Logo" class="logo">
+      <span class="fw-bold" >Point</span>
+      <span class="fw-bold" >Market</span>
+    </a>
 
     <!-- Toggle Button untuk Mobile -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -162,7 +170,7 @@
           <a class="nav-link {{ request()->is('mhs_barangproject') ? 'active' : '' }}" href="/mhs_barangproject">Reward</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('mhs_jenistransaksi') ? 'active' : '' }}" href="/mhs_jenistransaksi">Transaksi</a>
+          <a class="nav-link {{ request()->is('mhs_jenistransaksi') ? 'active' : '' }}" href="/mhs_jenistransaksi">Rules</a>
         </li>
       </ul>
 
@@ -174,11 +182,21 @@
         </div>
       </form>
 
-      <!-- Tombol Logout -->
-      <form action="{{ route('logout') }}" method="POST" class="ms-lg-3">
-        @csrf
-        <button type="submit" class="btn btn-logout">Logout</button>
-      </form>
+      <!-- Tombol Login / Logout -->
+      <div class="ms-lg-3">
+        @auth
+          <!-- Jika sudah login, tampilkan tombol Logout -->
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-logout">Logout</button>
+          </form>
+        @endauth
+
+        @guest
+          <!-- Jika belum login, tampilkan tombol Login -->
+          <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+        @endguest
+      </div>
     </div>
   </div>
 </nav>

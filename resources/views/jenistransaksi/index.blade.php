@@ -101,7 +101,7 @@
 
 <div class="card mr-5 ml-5">
     <div class="card-body">
-        <h4 class="card-title custom-title">Jenis Transaksi</h4>
+        <h4 class="card-title custom-title">Rules</h4>
         <a href="/jenistransaksi/create" class="btn btn-primary float-end">Add</a>
         <p class="card-description"></p>
         <div class="table-responsive">
@@ -120,7 +120,7 @@
                     @endif
                     <tr>
                         <th style="width: 5%;">No</th>
-                        <th style="width: 10%;">Jenis Transaksi</th>
+                        <th style="width: 10%;">Jenis Rules</th>
                         <th style="width: 40%;">Deskripsi</th>
                         <th style="width: 10%;">Point</th>
                         <th style="width: 10%;">Action</th>

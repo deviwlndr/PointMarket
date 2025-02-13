@@ -46,8 +46,12 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\TestEmail;
 
 
+
+
+Route::get('/', [MHS_MisiTambahanController::class, 'index']);
+
 Route::get('/test-email', function () {
-    Mail::to('deviwulan@gmail.com')->send(new TestEmail());
+    Mail::to('deviwulan@gmail.com', 'riela1126@gmail.com')->send(new TestEmail());
     return 'Email telah dikirim!';
 });
 
@@ -58,19 +62,9 @@ Route::get('password/reset/{token}', [ForgotPasswordController::class, 'showRese
 Route::post('password/reset', [ForgotPasswordController::class, 'reset'])->name('password.update');
 
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //route register
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
-
-//route login
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'role:admin,dosen'])->group(function () {
     Route::get('layouts/master', [AdminController::class, 'index'])->name('admin.dashboard');

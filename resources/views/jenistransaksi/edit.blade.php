@@ -28,14 +28,14 @@
 <div class="container pr-5 pl-5">
     <div class="card">
         <div class="card-body">
-        <h4 class="card-title custom-title">Edit Jenis Transaksi</h4>
+        <h4 class="card-title custom-title">Edit Rules</h4>
            
             <form action="/jenistransaksi/{{ $jenistransaksi->id_jenis_transaksi }}" method="POST">
                 @method('put')
                 @csrf
                  
                 <div class="form-group">
-                <label for="examplenpm">Nama Transaksi</label>
+                <label for="examplenpm">Nama Rules</label>
                     <input type="text" name="nama_transaksi" class="form-control" id="examplenama_transaksi" aria-describedby="nama_transaksi" placeholder="Nama Transaksi" value="{{ $jenistransaksi->nama_transaksi}}">
                 </div>
                 <div class="form-group">
